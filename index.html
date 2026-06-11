@@ -531,11 +531,11 @@
       <div class="day">
         <div class="day-date">Thursday · October 15</div>
         <div class="day-title">Montmartre</div>
-        <div class="event">
+        <div class="event" data-link="https://www.google.com/maps/d/u/0/viewer?hl=en&mid=19qw_ukbpEtvP4pfPH44Fv0CKKAmO0Dk&ll=48.88585872891496%2C2.342033795562304&z=16" data-linklabel="Open the Walking Tour Map">
           <div class="photo" data-wiki="Sacré-Cœur, Paris" role="img" aria-label="Sacré-Cœur basilica"></div>
           <div class="event-top"><span class="event-kind">Idea</span><span class="event-time">Anytime</span></div>
           <div class="event-main">A day on the butte</div>
-          <div class="event-detail">Sacré-Cœur and its views, the artists of Place du Tertre, the village lanes behind the hill, a long bistro lunch in the neighborhood. Mornings are quietest, but go whenever suits — or trade this for another day entirely. On the way up, Mamiche (45 Rue Condorcet, from your saved map) is a worthy pastry stop. Walking-tour route from last trip to be added.</div>
+          <div class="event-detail">Sacré-Cœur and its views, the artists of Place du Tertre, the village lanes behind the hill, a long bistro lunch in the neighborhood. Mornings are quietest, but go whenever suits — or trade this for another day entirely. On the way up, Mamiche (45 Rue Condorcet, from your saved map) is a worthy pastry stop. <b>Tap this card for the self-guided walking-tour route from last trip.</b></div>
         </div>
         <div class="event tbc">
           <div class="event-top"><span class="event-kind">Evening</span><span class="event-time">Open</span></div>
@@ -1081,6 +1081,13 @@ document.querySelectorAll('.photo[data-wiki]').forEach(function(el){
       html+='<div class="skind">'+kind+(time?' · '+time:'')+'</div><h3>'+main+'</h3>';
       if(detail)html+='<div class="sbody">'+detail.innerHTML+'</div>';
       var actions=[];
+      // Card-specific link (e.g., the Montmartre walking-tour map)
+      if(ev.dataset.link){
+        var al=document.createElement('a');
+        al.href=ev.dataset.link;al.target='_blank';al.rel='noopener';
+        al.textContent=ev.dataset.linklabel||'Open link';
+        actions.push(al);
+      }
       // Live flight tracking links
       var seen={},m,re=/\b(AA|EI|IB)\s?0?(\d{2,4})\b/g,txt=ev.textContent;
       while((m=re.exec(txt))){
