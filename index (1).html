@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Williams Family — Paris &amp; Ireland, October 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E6E4DD;
+  --card:#FDFCF9;
+  --ink:#191C1A;
+  --muted:#6A6E6B;
+  --rule:#CFCCC2;
+  --paris:#7A2E3C;
+  --ashford:#34543F;
+  --dublin:#1B4965;
+  --transit:#8A6B3C;
+  --road:#4F6D7A;
+  --flag:#A8500F;
+  --flag-bg:#F6EADC;
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.5;
+  font-feature-settings:"tnum" 1,"cv05" 1;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ---------- hero ---------- */
+header.hero{padding:48px 0 28px}
+.kicker{font-size:13px;letter-spacing:.02em;color:var(--muted);margin:0 0 6px}
+h1{
+  font-family:"Instrument Serif",Georgia,serif;
+  font-weight:400;
+  font-size:clamp(38px,7vw,68px);
+  line-height:1.02;
+  margin:0 0 4px;
+}
+h1 em{font-style:italic}
+.dates{font-size:15px;color:var(--muted);margin:0 0 26px}
+
+.spine{
+  display:flex;flex-wrap:wrap;align-items:stretch;
+  gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+.hop{
+  flex:1 1 96px;padding:12px 10px 12px 0;position:relative;min-width:96px;
+}
+.hop + .hop{padding-left:14px}
+.hop + .hop::before{
+  content:"";position:absolute;left:0;top:16px;bottom:16px;width:1px;background:var(--rule);
+}
+.hop b{display:block;font-size:17px;font-weight:600;letter-spacing:.01em}
+.hop span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.hop.p b{color:var(--paris)} .hop.a b{color:var(--ashford)} .hop.d b{color:var(--dublin)}
+
+/* ---------- controls ---------- */
+.controls{
+  position:sticky;top:0;z-index:30;background:var(--paper);
+  border-bottom:1px solid var(--rule);padding:12px 0 12px;margin-top:26px;
+}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctrl-label{font-size:12px;color:var(--muted);margin-right:2px;flex:0 0 auto}
+.chip{
+  font:inherit;font-size:13.5px;font-weight:500;
+  background:transparent;color:var(--ink);
+  border:1px solid var(--rule);border-radius:999px;
+  padding:6px 13px;cursor:pointer;white-space:nowrap;
+}
+.chip:hover{border-color:#A9A69B}
+.chip:focus-visible{outline:2px solid var(--dublin);outline-offset:2px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.jump{margin-top:9px;display:flex;flex-wrap:wrap;gap:14px}
+.jump a{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
+.jump a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* ---------- segment banner ---------- */
+.seg{margin:42px 0 0;scroll-margin-top:120px}
+.seg-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.seg-head h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:34px;margin:0;line-height:1.1}
+.seg-head .where{font-size:13.5px;color:var(--muted)}
+.seg-paris .seg-head{border-bottom-color:var(--paris)} .seg-paris h2{color:var(--paris)}
+.seg-ashford .seg-head{border-bottom-color:var(--ashford)} .seg-ashford h2{color:var(--ashford)}
+.seg-dublin .seg-head{border-bottom-color:var(--dublin)} .seg-dublin h2{color:var(--dublin)}
+.seg-transit .seg-head{border-bottom-color:var(--transit)} .seg-transit h2{color:var(--transit)}
+
+/* ---------- days ---------- */
+.day{display:grid;grid-template-columns:96px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.day:last-child{border-bottom:none}
+.dstamp{padding-top:2px}
+.dstamp .dow{font-size:12px;color:var(--muted);display:block}
+.dstamp .num{font-family:"Instrument Serif",Georgia,serif;font-size:40px;line-height:.95;display:block}
+.dstamp .mon{font-size:12px;color:var(--muted);display:block;margin-top:2px}
+.events{display:flex;flex-direction:column;gap:9px;min-width:0}
+
+.ev{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--rule);padding:11px 14px}
+.ev-time{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:1px}
+.ev-title{font-size:15.5px;font-weight:600;margin:0 0 2px}
+.ev-note{font-size:13.5px;color:var(--muted);margin:0}
+.ev-who{font-size:12px;color:var(--muted);margin-top:6px}
+.ev.flight{border-left-color:var(--transit)}
+.ev.transfer{border-left-color:var(--road)}
+.ev.stay{border-left-color:var(--ink)}
+.ev.meal{border-left-color:var(--ashford)}
+.ev.idea{border-left-color:var(--rule);background:transparent;border-style:dashed}
+.idea-group{font-size:13px;font-weight:600;color:var(--muted);margin:18px 0 2px}
+.idea-group:first-child{margin-top:4px}
+.ev.watch{border-left-color:var(--flag);background:var(--flag-bg)}
+.ev.watch .ev-title::before{content:"Needs a decision — ";color:var(--flag);font-weight:600}
+.ev.open{border-left-color:var(--rule);background:transparent}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#EFEDE6;padding:1px 5px;border-radius:3px}
+
+/* ---------- reference tables ---------- */
+.ref{margin:46px 0 0;scroll-margin-top:120px}
+.ref h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:34px;margin:0 0 10px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.party{border-bottom:1px solid var(--rule);padding:18px 0}
+.party h3{font-size:16px;margin:0 0 3px}
+.party .sub{font-size:13px;color:var(--muted);margin:0 0 12px}
+.legs{display:grid;gap:7px}
+.leg{display:grid;grid-template-columns:78px 1fr;gap:14px;font-size:14px;align-items:start}
+.leg .lday{color:var(--muted);font-size:13px;padding-top:1px}
+.leg .lbody b{font-weight:600}
+.leg .lmeta{color:var(--muted);font-size:12.5px;display:block}
+
+/* ---------- todo ---------- */
+.todo{margin:46px 0 0;scroll-margin-top:120px}
+.todo h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:34px;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid var(--flag);color:var(--flag)}
+.todo ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.todo li{border-left:3px solid var(--flag);background:var(--flag-bg);padding:10px 14px;font-size:14.5px}
+.todo li b{display:block;font-size:15px;margin-bottom:2px}
+.todo li span{color:#6B4A2E;font-size:13.5px}
+
+footer{margin:56px 0 40px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
+
+.hidden{display:none !important}
+
+@media (max-width:640px){
+  header.hero{padding:32px 0 20px}
+  .day{grid-template-columns:56px 1fr;gap:14px}
+  .dstamp .num{font-size:30px}
+  .seg-head h2,.ref h2,.todo h2{font-size:27px}
+  .leg{grid-template-columns:64px 1fr;gap:10px}
+  .hop{flex:1 1 84px;min-width:84px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .ev,.chip{transition:opacity .15s ease}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Williams family</p>
+    <h1>Paris, Ashford &amp; <em>Dublin</em></h1>
+    <p class="dates">Monday 12 October – Thursday 29 October 2026</p>
+
+    <div class="spine">
+      <div class="hop"><b>MAF</b><span>Oct 12–13 · out</span></div>
+      <div class="hop p"><b>Paris</b><span>Oct 13–18 · Hôtel du Louvre</span></div>
+      <div class="hop a"><b>Ashford</b><span>Oct 18–24 · Cong, Co. Mayo</span></div>
+      <div class="hop d"><b>Dublin</b><span>Oct 24–28 · The Shelbourne</span></div>
+      <div class="hop"><b>MAF</b><span>Oct 28–29 · home</span></div>
+    </div>
+  </header>
+</div>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="ctrl-row" id="who-filter">
+      <span class="ctrl-label">Showing</span>
+      <button class="chip" data-who="all" aria-pressed="true">Everyone</button>
+      <button class="chip" data-who="bs" aria-pressed="false">Brandon &amp; Steph</button>
+      <button class="chip" data-who="bk" aria-pressed="false">Billy &amp; Kelly</button>
+      <button class="chip" data-who="kk" aria-pressed="false">Kyle &amp; Kelsey</button>
+      <button class="chip" data-who="g" aria-pressed="false">Greg</button>
+    </div>
+    <nav class="jump">
+      <a href="#paris">Paris</a>
+      <a href="#ashford">Ashford</a>
+      <a href="#dublin">Dublin</a>
+      <a href="#flights">Flights &amp; confirmations</a>
+      <a href="#ideas">Ideas &amp; options</a>
+      <a href="#todo">Still to sort</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap" id="schedule"></main>
+
+<section class="wrap ref" id="flights"></section>
+
+<section class="wrap todo" id="todo">
+  <h2>Still to sort</h2>
+  <ul>
+    <li><b>Ashford dinner numbers</b><span>All five dinners at the castle are currently held for six. The reservations need to be moved up to seven.</span></li>
+    <li><b>Monday 19 October — the birthday dinner</b><span>The one night at Ashford with no table held. Worth deciding early: the private dining room, or the George V.</span></li>
+    <li><b>Hawk walk at the Ashford falconry school</b><span>Not booked. The small-group slots go early, so a morning is worth locking in.</span></li>
+    <li><b>Guinness Storehouse</b><span>Tickets not yet bought. Timed entry and it sells out — the Connoisseur Experience in particular has limited capacity.</span></li>
+    <li><b>FIRE Steakhouse, Dublin</b><span>Still to reserve for one of the nights between the 25th and 27th.</span></li>
+    <li><b>The Paris dinner with friends</b><span>Pick a night between the 14th and the 17th and get a table held.</span></li>
+    <li><b>Saturday 24 October transfer</b><span>Two versions quoted: the straight run from Ashford to The Shelbourne, or the longer one that adds the Guinness Storehouse and the wait. Decide before the tickets are booked.</span></li>
+  </ul>
+</section>
+
+<footer class="wrap">
+  <p>Everything here is drawn from the confirmations on file as of 2 September 2026. Times are local. Flights, rooms and dinners change — check the confirmation numbers against your own email before you travel.</p>
+</footer>
+
+<script>
+/* =========================================================================
+   EDIT BELOW. Everything on the page is built from these three lists.
+   who codes:  bs = Brandon & Steph · bk = Billy & Kelly
+               kk = Kyle & Kelsey   · g  = Greg   · all = everyone
+   kinds:      flight · transfer · stay · meal · idea · watch · open
+   ========================================================================= */
+
+const SEGMENTS = [
+  {id:"out",     cls:"seg-transit", title:"Getting there",  where:"Midland → Dallas → Dublin → Paris", days:["10-12","10-13"]},
+  {id:"paris",   cls:"seg-paris",   title:"Paris",          where:"Hôtel du Louvre · Place André Malraux, 75001", days:["10-14","10-15","10-16","10-17","10-18"]},
+  {id:"ashford", cls:"seg-ashford", title:"Ashford Castle", where:"Cong, Co. Mayo · 18–24 October", days:["10-19","10-20","10-21","10-22","10-23","10-24"]},
+  {id:"dublin",  cls:"seg-dublin",  title:"Dublin",         where:"The Shelbourne · 27 St Stephen's Green", days:["10-25","10-26","10-27","10-28","10-29"]}
+];
+
+const EVENTS = [
+  /* ---------- Monday 12 October ---------- */
+  {d:"10-12", who:["bs"], kind:"flight", time:"2:23 pm", title:"Midland → Dallas/Fort Worth → Dublin",
+   note:"AA 3512, then IB 4386 operated by American. Business Flexible. Lands Dublin 9:45 am Tuesday."},
+  {d:"10-12", who:["g"], kind:"flight", time:"2:23 pm", title:"Midland → Dallas/Fort Worth",
+   note:"AA 3512, seat 2A. Arrives DFW 3:49 pm."},
+  {d:"10-12", who:["g"], kind:"flight", time:"7:00 pm", title:"Dallas/Fort Worth → Dublin",
+   note:"AA 132, seat 4A. Lands Dublin 9:45 am Tuesday."},
+
+  /* ---------- Tuesday 13 October ---------- */
+  {d:"10-13", who:["bs","g"], kind:"flight", time:"9:45 am", title:"Land at Dublin",
+   note:"About 3½ hours on the ground before the Paris flight."},
+  {d:"10-13", who:["bs"], kind:"flight", time:"1:30 pm", title:"Dublin → Paris CDG",
+   note:"Aer Lingus EI 526, Premium Economy. Seats 1D and 1F. Arrives 4:20 pm."},
+  {d:"10-13", who:["g"], kind:"flight", time:"1:30 pm", title:"Dublin → Paris CDG",
+   note:"Aer Lingus EI 526, booking 24BTUF. Arrives 4:20 pm. One 10 kg bag."},
+  {d:"10-13", who:["bs"], kind:"stay", time:"4:00 pm", title:"Check in — Hôtel du Louvre",
+   note:"Pissarro Suite, five nights through Sunday. Confirmation 2382132947."},
+  {d:"10-13", who:["bk"], kind:"flight", time:"4:15 pm", title:"Midland → Dallas/Fort Worth → Dublin",
+   note:"American via DFW. Lands Dublin 9:45 am Wednesday."},
+
+  /* ---------- Wednesday 14 October ---------- */
+  {d:"10-14", who:["bk"], kind:"flight", time:"9:45 am", title:"Land at Dublin"},
+  {d:"10-14", who:["bk"], kind:"flight", time:"1:00 pm", title:"Dublin → Paris CDG",
+   note:"Aer Lingus EI 526. Arrives 3:50 pm. Lounge pass held at Dublin, ref 2SGCXB."},
+  {d:"10-14", who:["bk","g"], kind:"stay", time:"Afternoon", title:"Check in — Hôtel du Louvre",
+   note:"Empire Suite, four nights. Hotel confirmation 150852RA008035."},
+
+  /* ---------- Thursday 15 – Saturday 17 October ---------- */
+  {d:"10-15", who:["all"], kind:"open", title:"Paris — open day",
+   note:"Nothing scheduled yet."},
+  {d:"10-16", who:["all"], kind:"open", title:"Paris — open day",
+   note:"One of these three nights is the dinner with friends."},
+  {d:"10-17", who:["all"], kind:"open", title:"Paris — open day"},
+  {d:"10-17", who:["kk"], kind:"flight", time:"7:00 pm", title:"Dallas/Fort Worth → Dublin",
+   note:"AA 132, seats 4D and 4H. Confirmation OPGXPO. Lands 9:45 am Sunday."},
+
+  /* ---------- Sunday 18 October ---------- */
+  {d:"10-18", who:["bs","g"], kind:"stay", time:"By 7:45 am", title:"Leave the hotel for CDG",
+   note:"Checkout runs to 11:00 am, but the flight is at 11:00 — plan to be at the airport by 9:00."},
+  {d:"10-18", who:["bs","g"], kind:"flight", time:"11:00 am", title:"Paris CDG → Shannon",
+   note:"Aer Lingus EI 909. Lands around noon. Roughly 1¼ hours by road to Cong."},
+  {d:"10-18", who:["bk"], kind:"flight", time:"11:15 am", title:"Paris CDG → Dublin",
+   note:"Aer Lingus EI 523. Lands 12:10 pm."},
+  {d:"10-18", who:["kk"], kind:"flight", time:"9:45 am", title:"Land at Dublin"},
+  {d:"10-18", who:["kk"], kind:"transfer", time:"9:45 am", title:"Car to Ashford Castle — Irish Chauffeurs",
+   note:"Luxury saloon, meeting you at Dublin Terminal 2. Job H36170. About 3¼ hours to Cong, so expect the castle early afternoon."},
+  {d:"10-18", who:["bk"], kind:"transfer", time:"12:10 pm", title:"Car to Ashford Castle — Irish Chauffeurs",
+   note:"MPV, meeting you at Dublin Terminal 2. Job H36169. About 3¼ hours to Cong — arrival at the castle around 4:00 pm, ahead of the 6:00 dinner."},
+  {d:"10-18", who:["bs","g"], kind:"transfer", time:"After 12:00 pm", title:"Car to Ashford Castle — arranged by the castle",
+   note:"Booked directly through Ashford. Shannon to Cong is roughly 1¼ hours, so the castle by early afternoon."},
+  {d:"10-18", who:["all"], kind:"stay", time:"Afternoon", title:"Arrive at Ashford Castle",
+   note:"Six nights, through Saturday the 24th."},
+  {d:"10-18", who:["all"], kind:"meal", time:"6:00 pm", title:"Dinner at Stanley's",
+   note:"Held for 6."},
+
+  /* ---------- Monday 19 October ---------- */
+  {d:"10-19", who:["all"], kind:"watch", title:"Birthday dinner — nothing held",
+   note:"The one night at Ashford without a table. Everything else that week is booked."},
+
+  /* ---------- Tuesday 20 – Friday 23 October ---------- */
+  {d:"10-20", who:["all"], kind:"meal", time:"6:00 pm", title:"Dinner at Cullen's at the Cottage",
+   note:"Held for 6."},
+  {d:"10-21", who:["all"], kind:"meal", time:"6:30 pm", title:"Dinner in the Dungeon",
+   note:"Held for 6."},
+  {d:"10-22", who:["all"], kind:"meal", time:"6:30 pm", title:"Dinner in the George V",
+   note:"Held for 6."},
+  {d:"10-23", who:["all"], kind:"meal", time:"6:00 pm", title:"Dinner at Stanley's",
+   note:"Held for 6."},
+
+  /* ---------- Saturday 24 October ---------- */
+  {d:"10-24", who:["all"], kind:"stay", time:"Morning", title:"Check out of Ashford Castle",
+   note:"Cong to Dublin is about 3¼ hours."},
+  {d:"10-24", who:["bs"], kind:"stay", time:"3:00 pm", title:"Check in — The Shelbourne",
+   note:"Heritage Wing, one-bedroom king suite. Four nights, €4,481."},
+
+  /* ---------- Sunday 25 October ---------- */
+  {d:"10-25", who:["kk"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth",
+   note:"AA 133, seats 4D and 4H. Arrives 5:55 pm."},
+  {d:"10-25", who:["bs","bk","g"], kind:"open", title:"Dublin — open day"},
+
+  /* ---------- Monday 26 – Tuesday 27 October ---------- */
+  {d:"10-26", who:["bs","bk","g"], kind:"open", title:"Dublin — open day",
+   note:"Guinness Storehouse and dinner at FIRE both still to book."},
+  {d:"10-27", who:["bs","bk","g"], kind:"open", title:"Dublin — open day"},
+
+  /* ---------- Wednesday 28 October ---------- */
+  {d:"10-28", who:["bs"], kind:"stay", time:"12:00 pm", title:"Check out of The Shelbourne"},
+  {d:"10-28", who:["bs"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth → Midland",
+   note:"IB 4245 and IB 4995, operated by American. Home at 9:25 pm."},
+
+  /* ---------- Thursday 29 October ---------- */
+  {d:"10-29", who:["g"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth → Midland",
+   note:"AA 133 seat 4A, then AA 4172 seat 2A. Home at 9:25 pm. Confirmation UIVBDY."},
+  {d:"10-29", who:["bk"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth → Midland",
+   note:"AA 133 via DFW. Home at 9:51 pm."}
+];
+
+const PARTIES = [
+  {who:"bs", name:"Brandon &amp; Steph", sub:"Trip 1010973178 · airline ref A5RDD7 · agency ref 4LPYUM · Aer Lingus ref 2I4LMW",
+   legs:[
+     {day:"Oct 12", body:"<b>MAF 2:23 pm → DUB 9:45 am +1</b>", meta:"AA 3512 · IB 4386 operated by American · one stop at DFW · Business Flexible"},
+     {day:"Oct 13", body:"<b>DUB 1:30 pm → CDG 4:20 pm</b>", meta:"Aer Lingus EI 526 · Premium Economy · seats 1D, 1F"},
+     {day:"Oct 18", body:"<b>CDG 11:00 am → SNN 12:00 pm</b>", meta:"Aer Lingus EI 909 · seats not yet assigned"},
+     {day:"Oct 18", body:"<b>Shannon → Ashford Castle</b>", meta:"Car booked directly through the castle"},
+     {day:"Oct 28", body:"<b>DUB 1:00 pm → MAF 9:25 pm</b>", meta:"IB 4245 · IB 4995 operated by American · one stop at DFW"},
+     {day:"Stays", body:"<b>Hôtel du Louvre</b> · Pissarro Suite · Oct 13–18", meta:"Confirmation 2382132947 · $139.77 in fees due at the property"},
+     {day:"", body:"<b>The Shelbourne</b> · Heritage Wing king suite · Oct 24–28", meta:"€4,481 total · held on Visa"}
+   ]},
+  {who:"bk", name:"Billy &amp; Kelly", sub:"American booked through Amex Travel · Aer Lingus ref 2SGCXB",
+   legs:[
+     {day:"Oct 13", body:"<b>MAF 4:15 pm → DUB 9:45 am +1</b>", meta:"American · one stop at DFW"},
+     {day:"Oct 14", body:"<b>DUB 1:00 pm → CDG 3:50 pm</b>", meta:"Aer Lingus EI 526 · lounge access at Dublin included"},
+     {day:"Oct 18", body:"<b>CDG 11:15 am → DUB 12:10 pm</b>", meta:"Aer Lingus EI 523"},
+     {day:"Oct 18", body:"<b>Dublin T2 12:10 pm → Ashford Castle</b>", meta:"Irish Chauffeurs · MPV · job H36169 · €700"},
+     {day:"Oct 29", body:"<b>DUB 1:00 pm → MAF 9:51 pm</b>", meta:"AA 133 · one stop at DFW"},
+     {day:"Stays", body:"<b>Hôtel du Louvre</b> · Empire Suite · Oct 14–18", meta:"Hotel confirmation 150852RA008035"}
+   ]},
+  {who:"kk", name:"Kyle &amp; Kelsey", sub:"Confirmation OPGXPO · Ireland only, no Paris leg",
+   legs:[
+     {day:"Oct 17", body:"<b>DFW 7:00 pm → DUB 9:45 am +1</b>", meta:"AA 132 · seats 4D, 4H"},
+     {day:"Oct 18", body:"<b>Dublin T2 9:45 am → Ashford Castle</b>", meta:"Irish Chauffeurs · luxury saloon · job H36170 · €600"},
+     {day:"Oct 25", body:"<b>DUB 1:00 pm → DFW 5:55 pm</b>", meta:"AA 133 · seats 4D, 4H"},
+     {day:"Stays", body:"Ashford Castle · Oct 18–24", meta:""}
+   ]},
+  {who:"g", name:"Greg", sub:"Confirmation UIVBDY · AAdvantage 7A95YC4 · Aer Lingus ref 24BTUF",
+   legs:[
+     {day:"Oct 12", body:"<b>MAF 2:23 pm → DFW 3:49 pm</b>", meta:"AA 3512 · seat 2A"},
+     {day:"Oct 12", body:"<b>DFW 7:00 pm → DUB 9:45 am +1</b>", meta:"AA 132 · seat 4A"},
+     {day:"Oct 13", body:"<b>DUB 1:30 pm → CDG 4:20 pm</b>", meta:"Aer Lingus EI 526 · one 10 kg bag"},
+     {day:"Oct 18", body:"<b>CDG 11:00 am → SNN 11:50 am</b>", meta:"Aer Lingus EI 909"},
+     {day:"Oct 18", body:"<b>Shannon → Ashford Castle</b>", meta:"Car booked directly through the castle"},
+     {day:"Oct 29", body:"<b>DUB 1:00 pm → DFW 5:55 pm</b>", meta:"AA 133 · seat 4A"},
+     {day:"Oct 29", body:"<b>DFW 8:05 pm → MAF 9:25 pm</b>", meta:"AA 4172 · seat 2A"},
+     {day:"Stays", body:"<b>Hôtel du Louvre</b> · Empire Suite · Oct 14–18", meta:"Hotel confirmation 150852RA008035 · booking ZO-AX1029-76092"}
+   ]}
+];
+
+const IDEA_GROUPS = [
+  {key:"paris-bistro",    label:"Paris — bistros and steak"},
+  {key:"paris-montmartre",label:"Paris — Montmartre"},
+  {key:"paris-central",   label:"Paris — near the hotel and rue Saint-Honoré"},
+  {key:"ashford",         label:"Ashford and Galway"},
+  {key:"dublin",          label:"Dublin"}
+];
+
+const IDEAS = [
+  {seg:"paris-bistro", title:"Bistrot Paul Bert — 18 rue Paul Bert, 11th",
+   note:"The steak au poivre everyone comes for. About 20 minutes by cab. Closed Sunday and Monday, dinner from 7:30. Reservations by phone only on +33 1 43 72 24 01 and notoriously hard to reach — let the hotel do the calling. Tight room of small tables, so this one is for two, not the group."},
+  {seg:"paris-bistro", title:"Chez Georges — 1 rue du Mail, 2nd",
+   note:"Ten-minute walk. Order the pavé du Mail, a filet in creamy mustard sauce, or the sole meunière, and the mille-feuille after. Elbow-to-elbow like Paul Bert but warmer service. Closed Saturday and Sunday."},
+  {seg:"paris-bistro", title:"La Tour Montlhéry (Chez Denise) — 5 rue des Prouvaires, 1st",
+   note:"Old Les Halles market bistro, boisterous and unpretentious, côte de boeuf and very good frites in enormous portions. Noon to midnight, seven days. The easiest of these to seat a large table in, and ten minutes' walk from Montezuma — but book ahead, and come hungry rather than after wine-bar plates."},
+  {seg:"paris-bistro", title:"La Grille Montorgueil — 50 rue Montorgueil, 2nd",
+   note:"The no-plan option. Steak au poivre in a peppery jus, open 8am to 2am daily, walk-ins fine, cheaper than the rest."},
+  {seg:"paris-bistro", title:"Joséphine Chez Dumonet — 117 rue du Cherche-Midi, 6th",
+   note:"Left Bank, same classics — boeuf bourguignon, steak au poivre, Grand Marnier soufflé — but they keep a printed menu in English alongside the French and serve seven days a week. The gentler version of the same evening."},
+
+  {seg:"paris-montmartre", title:"Chantoiseau — 63 rue Lepic",
+   note:"The serious cooking on the hill, seven minutes from Place du Tertre. The savoury torte — game or duck with foie gras and mushrooms under pastry — is the thing to order. Closed Saturday and Sunday, and lunch is only 12:00 to 1:30."},
+  {seg:"paris-montmartre", title:"Le Coq & Fils — 98 rue Lepic",
+   note:"Antoine Westermann's poultry house. Roast chicken and coq au vin done properly. Open every day, lunch and dinner — the most reliable booking in Montmartre."},
+  {seg:"paris-montmartre", title:"La Mascotte — 52 rue des Abbesses",
+   note:"Corner brasserie doing seafood on that spot since 1889. Oysters and a glass of white with no planning required; open 7am to midnight daily."},
+
+  {seg:"paris-central", title:"Montezuma Café — 15 rue Notre Dame des Victoires, 2nd",
+   note:"Small natural wine bar doing sharing plates, twelve minutes' walk. Evenings only, 6pm to midnight, closed Sunday and Monday. Records rather than live music."},
+  {seg:"paris-central", title:"Le Gavroche — 19 rue Saint-Marc, 2nd",
+   note:"Three minutes from Montezuma and the natural place to walk on to. A bar à vins doing real bistro plates — pâté en croûte, beef tartare, calf's liver, very good frites. Open till midnight, closed Sunday. Fills fast in the evening, so book or arrive early."},
+  {seg:"paris-central", title:"Le Mesturet — 77 rue de Richelieu, 2nd",
+   note:"Four minutes from Montezuma and open every day, noon to 11pm. Honest traditional cooking — boeuf bourguignon, veal ragoût, escargots, a proper Paris-Brest — with a set menu around €36 and generous portions. Small and noisy."},
+  {seg:"paris-central", title:"Le Bougainville — 5 rue de la Banque, 2nd",
+   note:"The two-minute fallback. Plain 1960s room, reliable classics at fair prices, open 8am to midnight daily. Dependable rather than memorable."},
+  {seg:"paris-central", title:"La Fontaine d'Italie — 23 rue Molière, 1st",
+   note:"Italian, and the last stop before the hotel — two minutes from the door, tucked behind Palais-Royal. Pizza and pasta in a small, warm room. Dinner 7pm to 11pm, closed Sunday."},
+  {seg:"paris-central", title:"Caffè dei Fratelli — 10 rue des Pyramides, 1st",
+   note:"Italian five minutes from the hotel, open till midnight every day. Pizza, pasta and gnocchi, quick service, easy on a late night."},
+  {seg:"paris-central", title:"Daroco — 6 rue Vivienne, 2nd",
+   note:"Italian, in Jean Paul Gaultier's old flagship at the mouth of Galerie Vivienne. Wood-fired Neapolitan pizza and pasta made in-house, big loud beautiful room. Open seven days and large enough for the whole group."},
+  {seg:"paris-central", title:"Le Petit Vendôme — 8 rue des Capucines",
+   note:"Shopping-day lunch. Reputedly the best jambon-beurre in Paris, eaten standing at the counter. Tiny and mobbed by 12:30, so go early. Closed Sunday."},
+  {seg:"paris-central", title:"Loulou — 107 rue de Rivoli",
+   note:"Italian inside the Musée des Arts Décoratifs with a terrace over the Tuileries, at the end of your street. The view is the reason to go — the food is uneven and the prices are steep. Good mid-shopping break, not a dinner."},
+  {seg:"paris-central", title:"Racines — Passage des Panoramas",
+   note:"The quiet Italian alternative. Tiny room, short menu, serious natural wine list."},
+
+  {seg:"ashford", title:"P.J. Flaherty's, Salthill — Galway",
+   note:"Seafront pub on the Salthill promenade, about 45 minutes from Cong. Well-known Guinness, small and local rather than the Shop Street crowds. Pairs with an afternoon in Galway city and a walk along the bay."},
+  {seg:"ashford", title:"Hawk walk at the falconry school",
+   note:"On the castle grounds. Small groups, books up early — a morning slot would sit well before an afternoon in Galway."},
+
+  {seg:"dublin", title:"Guinness Storehouse",
+   note:"Timed entry, book ahead. Gravity Bar at the end."},
+  {seg:"dublin", title:"FIRE Steakhouse, Mansion House",
+   note:"Dawson Street, a few minutes' walk from The Shelbourne."}
+];
+
+/* ========================= rendering ========================= */
+const MONTHS = {"10":"October"};
+const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const KIND_ORDER = {flight:0, transfer:1, stay:2, meal:3, idea:4, watch:5, open:6};
+
+function dayLabel(key){
+  const [m,d] = key.split("-").map(Number);
+  const dt = new Date(2026, m-1, d);
+  return {dow: DOW[dt.getDay()], num: d, mon: MONTHS[String(m)]};
+}
+
+function eventCard(ev){
+  const el = document.createElement("article");
+  el.className = "ev " + ev.kind;
+  el.dataset.who = ev.who.join(" ");
+  let html = "";
+  if (ev.time) html += `<div class="ev-time">${ev.time}</div>`;
+  html += `<p class="ev-title">${ev.title}</p>`;
+  if (ev.note) html += `<p class="ev-note">${ev.note}</p>`;
+  if (!ev.who.includes("all")) {
+    const names = ev.who.map(w => (PARTIES.find(p=>p.who===w)||{}).name || w).join(" · ");
+    html += `<p class="ev-who">${names}</p>`;
+  }
+  el.innerHTML = html;
+  return el;
+}
+
+const schedule = document.getElementById("schedule");
+
+SEGMENTS.forEach(seg => {
+  const section = document.createElement("section");
+  section.className = "seg " + seg.cls;
+  section.id = seg.id;
+
+  const head = document.createElement("div");
+  head.className = "seg-head";
+  head.innerHTML = `<h2>${seg.title}</h2><span class="where">${seg.where}</span>`;
+  section.appendChild(head);
+
+  seg.days.forEach(key => {
+    const evs = EVENTS.filter(e => e.d === key)
+                      .sort((a,b) => (KIND_ORDER[a.kind]??9) - (KIND_ORDER[b.kind]??9));
+    if (!evs.length) return;
+    const lab = dayLabel(key);
+    const day = document.createElement("div");
+    day.className = "day";
+    day.dataset.day = key;
+    const stamp = document.createElement("div");
+    stamp.className = "dstamp";
+    stamp.innerHTML = `<span class="dow">${lab.dow}</span><span class="num">${lab.num}</span><span class="mon">${lab.mon}</span>`;
+    const box = document.createElement("div");
+    box.className = "events";
+    evs.forEach(e => box.appendChild(eventCard(e)));
+    day.appendChild(stamp); day.appendChild(box);
+    section.appendChild(day);
+  });
+
+  schedule.appendChild(section);
+});
+
+/* ideas section */
+const ideasSec = document.createElement("section");
+ideasSec.className = "seg";
+ideasSec.id = "ideas";
+ideasSec.innerHTML = `<div class="seg-head"><h2>Ideas &amp; options</h2><span class="where">Not booked, not scheduled — pick what appeals</span></div>`;
+const ideaWrap = document.createElement("div");
+ideaWrap.className = "day";
+ideaWrap.style.gridTemplateColumns = "1fr";
+const ideaBox = document.createElement("div");
+ideaBox.className = "events";
+IDEA_GROUPS.forEach(g => {
+  const items = IDEAS.filter(i => i.seg === g.key);
+  if (!items.length) return;
+  const h = document.createElement("p");
+  h.className = "idea-group";
+  h.textContent = g.label;
+  ideaBox.appendChild(h);
+  items.forEach(i => {
+    const el = document.createElement("article");
+    el.className = "ev idea";
+    el.innerHTML = `<p class="ev-title">${i.title}</p><p class="ev-note">${i.note}</p>`;
+    ideaBox.appendChild(el);
+  });
+});
+ideaWrap.appendChild(ideaBox);
+ideasSec.appendChild(ideaWrap);
+schedule.appendChild(ideasSec);
+
+/* flights reference */
+const ref = document.getElementById("flights");
+ref.innerHTML = `<h2>Flights &amp; confirmations</h2>`;
+PARTIES.forEach(p => {
+  const d = document.createElement("div");
+  d.className = "party";
+  d.dataset.who = p.who;
+  d.innerHTML = `<h3>${p.name}</h3><p class="sub">${p.sub}</p>` +
+    `<div class="legs">` + p.legs.map(l =>
+      `<div class="leg"><div class="lday">${l.day}</div><div class="lbody">${l.body}${l.meta?`<span class="lmeta">${l.meta}</span>`:""}</div></div>`
+    ).join("") + `</div>`;
+  ref.appendChild(d);
+});
+
+/* filter */
+const chips = document.querySelectorAll("#who-filter .chip");
+function applyFilter(who){
+  document.querySelectorAll(".ev[data-who]").forEach(el => {
+    const list = el.dataset.who.split(" ");
+    const show = who === "all" || list.includes("all") || list.includes(who);
+    el.classList.toggle("hidden", !show);
+  });
+  document.querySelectorAll(".day[data-day]").forEach(day => {
+    const any = day.querySelector(".ev:not(.hidden)");
+    day.classList.toggle("hidden", !any);
+  });
+  document.querySelectorAll(".seg[id]").forEach(seg => {
+    if (seg.id === "ideas") return;
+    const any = seg.querySelector(".day:not(.hidden)");
+    seg.classList.toggle("hidden", !any);
+  });
+  document.querySelectorAll(".party[data-who]").forEach(p => {
+    p.classList.toggle("hidden", who !== "all" && p.dataset.who !== who);
+  });
+}
+chips.forEach(c => c.addEventListener("click", () => {
+  chips.forEach(o => o.setAttribute("aria-pressed", String(o === c)));
+  applyFilter(c.dataset.who);
+}));
+</script>
+</body>
+</html>
