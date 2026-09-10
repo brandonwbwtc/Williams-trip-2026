@@ -1,1152 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Williams Family · Paris & Ireland · October 2026</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161412'/%3E%3Ccircle cx='32' cy='33' r='23' fill='none' stroke='%23cfb37a' stroke-width='1.5'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-size='28' fill='%23cfb37a'%3EW%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#161412">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Williams Trip">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Williams Family — Paris &amp; Ireland, October 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --emerald:#0e3b2e;
-    --emerald-deep:#092a21;
-    --noir:#161412;
-    --noir-deep:#0a0908;
-    --chap:var(--emerald);
-    --chap-deep:var(--emerald-deep);
-    --gilt:#b08d3e;
-    --gilt-soft:#cfb37a;
-    --ivory:#faf7f0;
-    --paper:#ffffff;
-    --ink:#22271f;
-    --ink-soft:#5d6357;
-    --hairline:#e4ddcd;
-    --bs:#7a5c2e;   /* Brandon & Stephanie */
-    --bk:#0e3b2e;   /* Billy & Kelly */
-    --kk:#5a3d5c;   /* Kyle & Kelsey */
-    --gw:#3e5a7a;   /* Greg */
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *,*::before,*::after{animation:none!important;transition:none!important;}
-  }
-  body{
-    font-family:'Jost',sans-serif;
-    font-weight:400;
-    background:var(--ivory);
-    color:var(--ink);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:680px;margin:0 auto;}
+:root{
+  --paper:#E6E4DD;
+  --card:#FDFCF9;
+  --ink:#191C1A;
+  --muted:#6A6E6B;
+  --rule:#CFCCC2;
+  --paris:#7A2E3C;
+  --ashford:#34543F;
+  --dublin:#1B4965;
+  --transit:#8A6B3C;
+  --road:#4F6D7A;
+  --flag:#A8500F;
+  --flag-bg:#F6EADC;
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.5;
+  font-feature-settings:"tnum" 1,"cv05" 1;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    background:
-      radial-gradient(120% 90% at 50% -10%, #2b2724 0%, var(--noir) 45%, var(--noir-deep) 100%);
-    color:var(--ivory);
-    text-align:center;
-    padding:64px 24px 56px;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero::after{
-    content:"";
-    position:absolute;left:24px;right:24px;top:16px;bottom:16px;
-    border:1px solid rgba(207,179,122,.35);
-    pointer-events:none;
-  }
-  .monogram{
-    width:64px;height:64px;margin:0 auto 22px;
-    border:1px solid var(--gilt-soft);
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Cormorant Garamond',serif;
-    font-size:34px;font-weight:600;color:var(--gilt-soft);
-  }
-  .eyebrow{
-    font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-    color:var(--gilt-soft);font-weight:500;
-  }
-  .hero h1{
-    font-family:'Cormorant Garamond',serif;
-    font-weight:500;
-    font-size:clamp(40px,11vw,58px);
-    line-height:1.05;
-    margin:14px 0 6px;
-  }
-  .hero h1 em{font-style:italic;font-weight:400;}
-  .hero .amp{
-    font-family:'Cormorant Garamond',serif;
-    font-style:italic;font-size:.55em;color:var(--gilt-soft);
-    vertical-align:middle;padding:0 .15em;
-  }
-  .hero .dates{
-    font-size:13px;letter-spacing:.18em;text-transform:uppercase;
-    color:rgba(250,247,240,.75);margin-top:14px;
-  }
-  .hero .rule{
-    width:56px;height:1px;background:var(--gilt);margin:22px auto 0;
-  }
+/* ---------- hero ---------- */
+header.hero{padding:48px 0 28px}
+.kicker{font-size:13px;letter-spacing:.02em;color:var(--muted);margin:0 0 6px}
+h1{
+  font-family:"Instrument Serif",Georgia,serif;
+  font-weight:400;
+  font-size:clamp(38px,7vw,68px);
+  line-height:1.02;
+  margin:0 0 4px;
+}
+h1 em{font-style:italic}
+.dates{font-size:15px;color:var(--muted);margin:0 0 26px}
 
-  /* ---------- CHAPTER NAV ---------- */
-  .chapnav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(250,247,240,.94);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--hairline);
-    display:flex;justify-content:center;gap:6px;
-    padding:10px 12px;
-    overflow-x:auto;
-  }
-  .chapnav a{
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-soft);text-decoration:none;
-    padding:7px 13px;border-radius:999px;white-space:nowrap;
-    border:1px solid transparent;
-    transition:all .2s ease;
-  }
-  .chapnav a:hover,.chapnav a:focus-visible{
-    color:var(--emerald);border-color:var(--gilt-soft);
-  }
-  .chapnav a:focus-visible{outline:2px solid var(--gilt);outline-offset:2px;}
+.spine{
+  display:flex;flex-wrap:wrap;align-items:stretch;
+  gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+}
+.hop{
+  flex:1 1 96px;padding:12px 10px 12px 0;position:relative;min-width:96px;
+}
+.hop + .hop{padding-left:14px}
+.hop + .hop::before{
+  content:"";position:absolute;left:0;top:16px;bottom:16px;width:1px;background:var(--rule);
+}
+.hop b{display:block;font-size:17px;font-weight:600;letter-spacing:.01em}
+.hop span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.hop.p b{color:var(--paris)} .hop.a b{color:var(--ashford)} .hop.d b{color:var(--dublin)}
 
-  /* ---------- TRAVELERS ---------- */
-  section{padding:44px 22px;}
-  .section-head{
-    text-align:center;margin-bottom:30px;
-  }
-  .section-head .eyebrow{color:var(--gilt);}
-  .section-head h2{
-    font-family:'Cormorant Garamond',serif;
-    font-weight:500;font-size:clamp(28px,7vw,36px);
-    color:var(--emerald);margin-top:6px;line-height:1.15;
-  }
-  .section-head .sub{
-    font-size:14px;color:var(--ink-soft);margin-top:8px;
-  }
-  .party{display:flex;flex-direction:column;gap:10px;}
-  .party-card{
-    background:var(--paper);
-    border:1px solid var(--hairline);
-    border-left:3px solid var(--accent,var(--gilt));
-    padding:14px 16px;
-    display:flex;align-items:center;gap:14px;
-  }
-  .party-dot{
-    width:34px;height:34px;border-radius:50%;
-    background:var(--accent);color:var(--ivory);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;
-    flex-shrink:0;letter-spacing:.02em;
-  }
-  .party-card .names{font-weight:500;font-size:15px;}
-  .party-card .from{font-size:12.5px;color:var(--ink-soft);letter-spacing:.04em;}
+/* ---------- controls ---------- */
+.controls{
+  position:sticky;top:0;z-index:30;background:var(--paper);
+  border-bottom:1px solid var(--rule);padding:12px 0 12px;margin-top:26px;
+}
+.ctrl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctrl-label{font-size:12px;color:var(--muted);margin-right:2px;flex:0 0 auto}
+.chip{
+  font:inherit;font-size:13.5px;font-weight:500;
+  background:transparent;color:var(--ink);
+  border:1px solid var(--rule);border-radius:999px;
+  padding:6px 13px;cursor:pointer;white-space:nowrap;
+}
+.chip:hover{border-color:#A9A69B}
+.chip:focus-visible{outline:2px solid var(--dublin);outline-offset:2px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.jump{margin-top:9px;display:flex;flex-wrap:wrap;gap:14px}
+.jump a{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
+.jump a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 
-  /* ---------- TIMELINE ---------- */
-  .chapter{padding-top:54px;}
-  .chapter-title{
-    text-align:center;margin-bottom:8px;
-  }
-  .chapter-title .num{
-    font-family:'Cormorant Garamond',serif;font-style:italic;
-    color:var(--gilt);font-size:15px;letter-spacing:.1em;
-  }
-  .chapter-title h2{
-    font-family:'Cormorant Garamond',serif;font-weight:500;
-    font-size:clamp(30px,8vw,40px);color:var(--chap);line-height:1.1;
-  }
-  .chapter-title .range{
-    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--ink-soft);margin-top:6px;
-  }
-  .chapter-title .flourish{
-    width:90px;margin:16px auto 0;display:block;
-  }
+/* ---------- segment banner ---------- */
+.seg{margin:42px 0 0;scroll-margin-top:120px}
+.seg-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.seg-head h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:34px;margin:0;line-height:1.1}
+.seg-head .where{font-size:13.5px;color:var(--muted)}
+.seg-paris .seg-head{border-bottom-color:var(--paris)} .seg-paris h2{color:var(--paris)}
+.seg-ashford .seg-head{border-bottom-color:var(--ashford)} .seg-ashford h2{color:var(--ashford)}
+.seg-dublin .seg-head{border-bottom-color:var(--dublin)} .seg-dublin h2{color:var(--dublin)}
+.seg-transit .seg-head{border-bottom-color:var(--transit)} .seg-transit h2{color:var(--transit)}
 
-  .timeline{
-    position:relative;margin-top:34px;
-    padding-left:30px;
-  }
-  .timeline::before{
-    content:"";position:absolute;left:9px;top:6px;bottom:6px;
-    width:1px;background:linear-gradient(var(--gilt-soft),var(--hairline));
-  }
-  .day{position:relative;margin-bottom:34px;}
-  .day:last-child{margin-bottom:0;}
-  .day::before{
-    content:"";position:absolute;left:-26px;top:7px;
-    width:9px;height:9px;border-radius:50%;
-    background:var(--ivory);border:2px solid var(--gilt);
-  }
-  .day-date{
-    font-size:11px;letter-spacing:.26em;text-transform:uppercase;
-    color:var(--gilt);font-weight:600;
-  }
-  .day-title{
-    font-family:'Cormorant Garamond',serif;
-    font-size:23px;font-weight:600;color:var(--chap);
-    line-height:1.2;margin:2px 0 12px;
-  }
-  .day-title em{font-style:italic;font-weight:500;}
+/* ---------- days ---------- */
+.day{display:grid;grid-template-columns:96px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.day:last-child{border-bottom:none}
+.dstamp{padding-top:2px}
+.dstamp .dow{font-size:12px;color:var(--muted);display:block}
+.dstamp .num{font-family:"Instrument Serif",Georgia,serif;font-size:40px;line-height:.95;display:block}
+.dstamp .mon{font-size:12px;color:var(--muted);display:block;margin-top:2px}
+.events{display:flex;flex-direction:column;gap:9px;min-width:0}
 
-  .event{
-    background:var(--paper);
-    border:1px solid var(--hairline);
-    padding:14px 16px;
-    margin-bottom:10px;
-  }
-  .event-top{
-    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
-    margin-bottom:4px;
-  }
-  .event-kind{
-    font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--gilt);font-weight:600;
-  }
-  .event-time{
-    font-family:'Cormorant Garamond',serif;
-    font-size:17px;font-weight:600;color:var(--chap);white-space:nowrap;
-  }
-  .event-main{font-weight:500;font-size:15px;line-height:1.45;}
-  .event-detail{font-size:13px;color:var(--ink-soft);margin-top:4px;line-height:1.55;}
-  .event-detail b{color:var(--ink);font-weight:500;}
-  .tags{margin-top:9px;display:flex;gap:6px;flex-wrap:wrap;}
-  .tag{
-    font-size:10.5px;letter-spacing:.06em;font-weight:500;
-    padding:3px 9px;border-radius:999px;
-    color:#fff;background:var(--accent,var(--gilt));
-  }
-  .tag.all{background:var(--gilt);}
-  .event.tbc{
-    background:transparent;
-    border:1px dashed var(--gilt-soft);
-  }
-  .event.tbc .event-kind{color:var(--ink-soft);}
-  .event.birthday{
-    border:1px solid var(--gilt);
-    background:linear-gradient(135deg,#fdfaf2,#faf3e2);
-  }
+.ev{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--rule);padding:11px 14px}
+.ev-time{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:1px}
+.ev-title{font-size:15.5px;font-weight:600;margin:0 0 2px}
+.ev-note{font-size:13.5px;color:var(--muted);margin:0}
+.ev-who{font-size:12px;color:var(--muted);margin-top:6px}
+.ev.flight{border-left-color:var(--transit)}
+.ev.transfer{border-left-color:var(--road)}
+.ev.stay{border-left-color:var(--ink)}
+.ev.meal{border-left-color:var(--ashford)}
+.ev.idea{border-left-color:var(--rule);background:transparent;border-style:dashed}
+.ev.watch{border-left-color:var(--flag);background:var(--flag-bg)}
+.ev.watch .ev-title::before{content:"Needs a decision — ";color:var(--flag);font-weight:600}
+.ev.open{border-left-color:var(--rule);background:transparent}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#EFEDE6;padding:1px 5px;border-radius:3px}
 
-  /* ---------- STAY CARDS ---------- */
-  .stay{
-    background:var(--chap);color:var(--ivory);
-    padding:24px 22px;margin:26px 0 4px;
-    position:relative;
-  }
-  .stay::after{
-    content:"";position:absolute;inset:8px;
-    border:1px solid rgba(207,179,122,.4);pointer-events:none;
-  }
-  .stay .eyebrow{color:var(--gilt-soft);}
-  .stay h3{
-    font-family:'Cormorant Garamond',serif;font-weight:500;
-    font-size:26px;line-height:1.15;margin:6px 0 4px;
-  }
-  .stay .meta{font-size:13px;color:rgba(250,247,240,.85);line-height:1.7;}
-  .stay .meta b{color:var(--gilt-soft);font-weight:500;}
+/* ---------- reference tables ---------- */
+.ref{margin:46px 0 0;scroll-margin-top:120px}
+.ref h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:34px;margin:0 0 10px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.party{border-bottom:1px solid var(--rule);padding:18px 0}
+.party h3{font-size:16px;margin:0 0 3px}
+.party .sub{font-size:13px;color:var(--muted);margin:0 0 12px}
+.legs{display:grid;gap:7px}
+.leg{display:grid;grid-template-columns:78px 1fr;gap:14px;font-size:14px;align-items:start}
+.leg .lday{color:var(--muted);font-size:13px;padding-top:1px}
+.leg .lbody b{font-weight:600}
+.leg .lmeta{color:var(--muted);font-size:12.5px;display:block}
 
-  /* ---------- PHOTOS ---------- */
-  .photo{
-    height:0;overflow:hidden;
-    background-size:cover;background-position:center;
-    transition:height .5s ease;
-  }
-  .stay .photo{margin:-24px -22px 18px;}
-  .stay .photo.loaded{height:170px;}
-  .event .photo{margin:-14px -16px 12px;}
-  .event .photo.loaded{height:150px;border-bottom:1px solid var(--hairline);}
+/* ---------- todo ---------- */
+.todo{margin:46px 0 0;scroll-margin-top:120px}
+.todo h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:34px;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid var(--flag);color:var(--flag)}
+.todo ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.todo li{border-left:3px solid var(--flag);background:var(--flag-bg);padding:10px 14px;font-size:14.5px}
+.todo li b{display:block;font-size:15px;margin-bottom:2px}
+.todo li span{color:#6B4A2E;font-size:13.5px}
 
-  /* ---------- LITTLE BLACK BOOK ---------- */
-  .bbook{
-    margin-top:46px;
-    border-top:1px solid var(--hairline);
-    padding-top:36px;
-  }
-  .bbook-head{text-align:center;margin-bottom:26px;}
-  .bbook-head h3{
-    font-family:'Cormorant Garamond',serif;font-weight:500;
-    font-size:clamp(24px,6vw,30px);color:var(--chap);margin-top:4px;
-  }
+footer{margin:56px 0 40px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
 
-  /* ---------- CHAPTER THEMES ---------- */
-  /* Paris: black & gold. Ireland chapters keep green & gold. */
-  #paris{--chap:var(--noir);--chap-deep:var(--noir-deep);}
-  .bbook-head .sub{font-size:13px;color:var(--ink-soft);margin-top:6px;font-style:italic;}
-  .bb-group{margin-bottom:26px;}
-  .bb-group h4{
-    font-size:11px;letter-spacing:.24em;text-transform:uppercase;
-    color:var(--gilt);font-weight:600;margin-bottom:10px;
-    display:flex;align-items:center;gap:10px;
-  }
-  .bb-group h4::after{content:"";flex:1;height:1px;background:var(--hairline);}
-  .bb-item{
-    padding:10px 0;border-bottom:1px dotted var(--hairline);
-    font-size:14px;line-height:1.55;
-  }
-  .bb-item:last-child{border-bottom:none;}
-  .bb-item b{font-weight:500;color:var(--ink);}
-  .bb-item .where{font-size:12px;color:var(--gilt);letter-spacing:.04em;}
-  .bb-item .why{color:var(--ink-soft);font-size:13px;}
+.hidden{display:none !important}
 
-  /* ---------- NOTES ---------- */
-  .notes{background:var(--paper);border-top:1px solid var(--hairline);}
-  .note-list{display:flex;flex-direction:column;gap:12px;max-width:560px;margin:0 auto;}
-  .note{
-    display:flex;gap:12px;font-size:14px;color:var(--ink-soft);line-height:1.6;
-  }
-  .note::before{
-    content:"◆";color:var(--gilt);font-size:9px;line-height:2.4;flex-shrink:0;
-  }
-  .note b{color:var(--ink);font-weight:500;}
-
-  /* ---------- FOOTER ---------- */
-  footer{
-    background:var(--emerald-deep);color:rgba(250,247,240,.7);
-    text-align:center;padding:44px 24px;
-    font-size:12px;letter-spacing:.12em;
-  }
-  footer .monogram{width:46px;height:46px;font-size:24px;margin-bottom:16px;}
-  footer .fline{
-    font-family:'Cormorant Garamond',serif;font-style:italic;
-    font-size:18px;letter-spacing:.02em;color:var(--gilt-soft);
-    margin-bottom:10px;
-  }
-
-  @media (min-width:560px){
-    section{padding-left:32px;padding-right:32px;}
-    .timeline{padding-left:38px;}
-    .timeline::before{left:11px;}
-    .day::before{left:-32px;}
-  }
-  /* ---------- APP LAYER ---------- */
-  .ticker{
-    background:var(--paper);
-    border-bottom:1px solid var(--hairline);
-    padding:10px 16px;
-    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
-    text-align:center;line-height:1.6;
-  }
-  .ticker b{color:var(--gilt);font-weight:600;}
-  .event{position:relative;}
-  .event[data-tap],.bb-item[data-tap],.stay[data-tap]{cursor:pointer;-webkit-tap-highlight-color:transparent;}
-  .event[data-tap]:active,.bb-item[data-tap]:active{transform:scale(.985);}
-  .event[data-tap]{padding-right:32px;}
-  .event[data-tap]::after{
-    content:"›";position:absolute;right:13px;top:50%;transform:translateY(-50%);
-    color:var(--gilt-soft);font-size:20px;font-family:'Cormorant Garamond',serif;
-  }
-  .bb-item[data-tap]{position:relative;padding-right:26px;}
-  .bb-item[data-tap]::after{content:"›";position:absolute;right:6px;top:12px;color:var(--gilt-soft);font-size:18px;font-family:'Cormorant Garamond',serif;}
-  .today-pill{
-    position:fixed;right:16px;bottom:18px;z-index:80;
-    background:var(--emerald);color:var(--ivory);
-    border:1px solid var(--gilt-soft);border-radius:999px;
-    padding:11px 20px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-    box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;display:none;
-  }
-  .sheet-backdrop{
-    position:fixed;inset:0;background:rgba(10,9,8,.45);
-    z-index:100;display:none;align-items:flex-end;justify-content:center;
-  }
-  .sheet-backdrop.open{display:flex;}
-  .sheet{
-    background:var(--ivory);width:100%;max-width:680px;
-    max-height:82vh;overflow-y:auto;
-    border-top:2px solid var(--gilt);
-    border-radius:18px 18px 0 0;
-    padding:14px 22px 32px;
-    animation:sheetUp .28s ease;
-  }
-  @keyframes sheetUp{from{transform:translateY(46px);opacity:.4}to{transform:translateY(0);opacity:1}}
-  .sheet-handle{width:44px;height:4px;border-radius:99px;background:var(--hairline);margin:0 auto 16px;}
-  .sheet .skind{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gilt);font-weight:600;}
-  .sheet .sdate{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;}
-  .sheet h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:var(--emerald);margin:2px 0 10px;line-height:1.15;}
-  .sheet .sbody{font-size:14.5px;color:var(--ink-soft);line-height:1.65;}
-  .sheet .sbody b{color:var(--ink);font-weight:500;}
-  .sheet .sphoto{height:160px;margin:0 -22px 14px;background-size:cover;background-position:center;}
-  .sheet-actions{display:flex;flex-direction:column;gap:8px;margin-top:20px;}
-  .sheet-actions a,.sheet-actions button{
-    display:block;width:100%;text-align:center;text-decoration:none;
-    border:1px solid var(--gilt);color:var(--emerald);background:transparent;
-    font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    padding:12px;cursor:pointer;border-radius:2px;
-  }
-  .sheet-actions a:active,.sheet-actions button:active{background:var(--gilt);color:var(--ivory);}
-
-  @media print{
-    .chapnav{display:none;}
-    .hero{padding:40px 24px;}
-    body{background:#fff;}
-  }
+@media (max-width:640px){
+  header.hero{padding:32px 0 20px}
+  .day{grid-template-columns:56px 1fr;gap:14px}
+  .dstamp .num{font-size:30px}
+  .seg-head h2,.ref h2,.todo h2{font-size:27px}
+  .leg{grid-template-columns:64px 1fr;gap:10px}
+  .hop{flex:1 1 84px;min-width:84px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .ev,.chip{transition:opacity .15s ease}
+}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <div class="monogram">W</div>
-    <div class="eyebrow">A Private Family Journey</div>
-    <h1>Paris <span class="amp">&amp;</span> <em>Ireland</em></h1>
-    <div class="dates">12 — 29 October 2026</div>
-    <div class="rule"></div>
-  </div>
-</header>
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Williams family</p>
+    <h1>Paris, Ashford &amp; <em>Dublin</em></h1>
+    <p class="dates">Monday 12 October – Thursday 29 October 2026</p>
 
-<!-- CHAPTER NAV -->
-<nav class="chapnav" aria-label="Trip chapters">
-  <a href="#party">The Party</a>
-  <a href="#paris">Paris</a>
-  <a href="#ashford">Ashford Castle</a>
-  <a href="#dublin">Dublin</a>
-</nav>
+    <div class="spine">
+      <div class="hop"><b>MAF</b><span>Oct 12–13 · out</span></div>
+      <div class="hop p"><b>Paris</b><span>Oct 13–18 · Hôtel du Louvre</span></div>
+      <div class="hop a"><b>Ashford</b><span>Oct 18–24 · Cong, Co. Mayo</span></div>
+      <div class="hop d"><b>Dublin</b><span>Oct 24–28 · The Shelbourne</span></div>
+      <div class="hop"><b>MAF</b><span>Oct 28–29 · home</span></div>
+    </div>
+  </header>
+</div>
 
-<!-- TRAVELERS -->
-<section id="party">
+<div class="controls">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Traveling Together</div>
-      <h2>The Williams Family</h2>
-      <p class="sub">Up to seven at the table · four itineraries · dinner together every evening</p>
+    <div class="ctrl-row" id="who-filter">
+      <span class="ctrl-label">Showing</span>
+      <button class="chip" data-who="all" aria-pressed="true">Everyone</button>
+      <button class="chip" data-who="bs" aria-pressed="false">Brandon &amp; Steph</button>
+      <button class="chip" data-who="bk" aria-pressed="false">Billy &amp; Kelly</button>
+      <button class="chip" data-who="kk" aria-pressed="false">Kyle &amp; Kelsey</button>
+      <button class="chip" data-who="g" aria-pressed="false">Greg</button>
     </div>
-    <div class="party">
-      <div class="party-card" style="--accent:var(--bs)">
-        <div class="party-dot">B·S</div>
-        <div>
-          <div class="names">Brandon &amp; Stephanie Williams</div>
-          <div class="from">Departing Midland (MAF) · Oct 12 – Oct 28</div>
-        </div>
-      </div>
-      <div class="party-card" style="--accent:var(--gw)">
-        <div class="party-dot">G</div>
-        <div>
-          <div class="names">Greg Williams</div>
-          <div class="from">Traveling with Brandon &amp; Stephanie · Oct 12 – Oct 29</div>
-        </div>
-      </div>
-      <div class="party-card" style="--accent:var(--bk)">
-        <div class="party-dot">B·K</div>
-        <div>
-          <div class="names">Billy &amp; Kelly Williams</div>
-          <div class="from">Joining in Paris · Oct 14</div>
-        </div>
-      </div>
-      <div class="party-card" style="--accent:var(--kk)">
-        <div class="party-dot">K·K</div>
-        <div>
-          <div class="names">Kyle &amp; Kelsey Williams</div>
-          <div class="from">Departing Dallas/Fort Worth (DFW) · Oct 17 – Oct 25 · Kelsey's attendance TBC</div>
-        </div>
-      </div>
-    </div>
+    <nav class="jump">
+      <a href="#paris">Paris</a>
+      <a href="#ashford">Ashford</a>
+      <a href="#dublin">Dublin</a>
+      <a href="#flights">Flights &amp; confirmations</a>
+      <a href="#ideas">Ideas &amp; options</a>
+      <a href="#todo">Still to sort</a>
+    </nav>
   </div>
+</div>
+
+<main class="wrap" id="schedule"></main>
+
+<section class="wrap ref" id="flights"></section>
+
+<section class="wrap todo" id="todo">
+  <h2>Still to sort</h2>
+  <ul>
+    <li><b>Ashford dinners are booked for 6, but 7 of us are staying</b><span>Every night at Ashford is reserved for six guests. Ask the castle to move all five dinners to seven.</span></li>
+    <li><b>Monday 19 October — the birthday dinner isn't booked</b><span>The only night at Ashford with nothing held. Worth deciding early: private dining room, or the George V.</span></li>
+    <li><b>Greg lands in Paris on the 13th; his room starts on the 14th</b><span>His Aer Lingus booking (24BTUF) puts him at CDG at 4:20 pm Tuesday, but Hôtel du Louvre has him checking in Wednesday. One night unaccounted for.</span></li>
+    <li><b>Tell Hôtel du Louvre the Empire Suite is three adults</b><span>The reservation is written for one room, and Greg is the named guest. Confirm the occupancy and ask about a rollaway before arrival rather than at the desk.</span></li>
+    <li><b>Kyle &amp; Kelsey's Dublin night</b><span>Ashford checks out Saturday the 24th, and they fly home Sunday the 25th at 1:00 pm — they need a bed on the 24th.</span></li>
+    <li><b>Greg and Billy &amp; Kelly stay past the 28th</b><span>The Shelbourne booking on file ends Wednesday the 28th. All three fly out on the 29th, so somebody needs a room for that last night.</span></li>
+    <li><b>Hawk walk at the Ashford falconry school</b><span>Not booked. The small-group slots go early — worth locking a morning once the count is settled.</span></li>
+    <li><b>Guinness Storehouse and FIRE, Dublin</b><span>Both still to reserve for the 25th–27th.</span></li>
+    <li><b>The Paris friends dinner</b><span>Pick a night between the 14th and 17th and get it in the calendar.</span></li>
+    <li><b>Kelsey's trip is still tentative</b><span>Her seat is held on both AA legs (4H). Confirm before the Ashford count goes in.</span></li>
+  </ul>
 </section>
 
-<!-- CHAPTER I — PARIS -->
-<section class="chapter" id="paris">
-  <div class="wrap">
-    <div class="chapter-title">
-      <div class="num">Chapter I</div>
-      <h2>Paris</h2>
-      <div class="range">12 — 18 October</div>
-      <svg class="flourish" viewBox="0 0 90 12" aria-hidden="true"><path d="M2 6 H36 M54 6 H88" stroke="#b08d3e" stroke-width="1"/><circle cx="45" cy="6" r="2.5" fill="none" stroke="#b08d3e"/></svg>
-      <p class="sub" style="font-size:13px;color:var(--ink-soft);margin-top:14px;font-style:italic;">Flights and the hotel are confirmed. Everything else is just an idea — do it, swap it, or skip it.</p>
-    </div>
-
-    <div class="stay">
-      <div class="photo" data-wiki="Hôtel du Louvre" role="img" aria-label="Hôtel du Louvre"></div>
-      <div class="eyebrow">In Residence</div>
-      <h3>Hôtel du Louvre</h3>
-      <div class="meta">
-        The Unbound Collection by Hyatt · Pissarro Suite<br>
-        <b>Check-in</b> Tue, Oct 13 · 4:00 PM &nbsp;·&nbsp; <b>Check-out</b> Sun, Oct 18 · 11:00 AM<br>
-        Confirmation <b>2382132947</b> · Primary guest: Michael B. Williams<br>
-        Greg's room: Empire Suite · Oct 14 – 18 · Confirmation <b>150852RA008035</b>
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="day">
-        <div class="day-date">Monday · October 12</div>
-        <div class="day-title">The Journey Begins</div>
-        <div class="event" style="--accent:var(--bs)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">2:23 PM</span></div>
-          <div class="event-main">Midland (MAF) → Dublin (DUB)</div>
-          <div class="event-detail">AA 3512 to DFW (2:23 – 3:49 PM), then the 7:00 PM overnight to Dublin — sold as IB 4386 for Brandon &amp; Stephanie, AA 132 for Greg; same aircraft · Business Flexible · 13h 22m<br>Arrives <b>9:45 AM, Oct 13</b> · Refs: <b>A5RDD7</b> (B&amp;S) · <b>UIVBDY</b> (Greg, seats 2A / 4A)</div>
-          <div class="tags"><span class="tag">Brandon &amp; Stephanie</span><span class="tag" style="background:var(--gw)">Greg</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Tuesday · October 13</div>
-        <div class="day-title">Dublin, <em>then on to Paris</em></div>
-        <div class="event" style="--accent:var(--bs)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">1:30 PM</span></div>
-          <div class="event-main">Dublin (DUB) → Paris (CDG)</div>
-          <div class="event-detail">Aer Lingus EI 526 · non-stop, 1h 50m · Premium Economy · seats 1D / 1F (B&amp;S) · Greg on ref <b>24BTUF</b><br>Arrives <b>4:20 PM</b> · Airline ref <b>2I4LMW</b> · note: departure moved from 1:25 to 1:30 PM in a schedule change</div>
-          <div class="tags"><span class="tag">Brandon &amp; Stephanie</span><span class="tag" style="background:var(--gw)">Greg</span></div>
-        </div>
-        <div class="event" style="--accent:var(--bs)">
-          <div class="event-top"><span class="event-kind">Hotel</span><span class="event-time">4:00 PM</span></div>
-          <div class="event-main">Check in · Hôtel du Louvre</div>
-          <div class="event-detail">Pissarro Suite · five nights in the heart of the 1st arrondissement. Greg's room (Empire Suite) begins Oct 14.</div>
-          <div class="tags"><span class="tag">Brandon &amp; Stephanie</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Wednesday · October 14</div>
-        <div class="day-title">The Party Grows</div>
-        <div class="event" style="--accent:var(--bs)">
-          <div class="event-top"><span class="event-kind">Idea</span><span class="event-time">At leisure</span></div>
-          <div class="event-main">A slow Paris morning</div>
-          <div class="event-detail">If the mood strikes: coffee and pastries at a boulangerie near the hotel, then a stroll through the Palais-Royal gardens and Tuileries — both steps from the front door.</div>
-          <div class="tags"><span class="tag">Brandon &amp; Stephanie</span><span class="tag" style="background:var(--gw)">Greg</span></div>
-        </div>
-        <div class="event" style="--accent:var(--bk)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">1:00 PM</span></div>
-          <div class="event-main">Dublin (DUB) → Paris (CDG)</div>
-          <div class="event-detail">Aer Lingus EI 526 · departs Terminal 2 · arrives Aérogare 1 at <b>3:50 PM</b><br>Booking ref <b>2SGCXB</b> · Aer Lingus Lounge access in Dublin</div>
-          <div class="tags"><span class="tag">Billy &amp; Kelly</span></div>
-        </div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Idea · Dinner</span><span class="event-time">Open</span></div>
-          <div class="event-main">Welcome bistro dinner</div>
-          <div class="event-detail">If everyone's up for it once Billy &amp; Kelly land — a classic neighborhood bistro near the hotel. Nothing booked.</div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Thursday · October 15</div>
-        <div class="day-title">Montmartre</div>
-        <div class="event" data-link="https://www.google.com/maps/d/u/0/viewer?hl=en&mid=19qw_ukbpEtvP4pfPH44Fv0CKKAmO0Dk&ll=48.88585872891496%2C2.342033795562304&z=16" data-linklabel="Open the Walking Tour Map">
-          <div class="photo" data-wiki="Sacré-Cœur, Paris" role="img" aria-label="Sacré-Cœur basilica"></div>
-          <div class="event-top"><span class="event-kind">Idea</span><span class="event-time">Anytime</span></div>
-          <div class="event-main">A day on the butte</div>
-          <div class="event-detail">Sacré-Cœur and its views, the artists of Place du Tertre, the village lanes behind the hill, a long bistro lunch in the neighborhood. Mornings are quietest, but go whenever suits — or trade this for another day entirely. On the way up, Mamiche (45 Rue Condorcet, from your saved map) is a worthy pastry stop. <b>Tap this card for the self-guided walking-tour route from last trip.</b></div>
-        </div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Evening</span><span class="event-time">Open</span></div>
-          <div class="event-main">Dinner — wherever looks good</div>
-          <div class="event-detail">No reservation needed; Paris is full of bistros worth wandering into.</div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Friday · October 16</div>
-        <div class="day-title">Art <em>&amp;</em> the Boutiques</div>
-        <div class="event">
-          <div class="photo" data-wiki="Musée d'Orsay" role="img" aria-label="Musée d'Orsay"></div>
-          <div class="event-top"><span class="event-kind">Idea</span><span class="event-time">Anytime</span></div>
-          <div class="event-main">Musée d'Orsay</div>
-          <div class="event-detail">The Impressionist collection in the old railway station — a 15-minute walk across the Seine from the hotel. Open every day of the stay except Monday. If you decide to go, timed tickets booked a day or two ahead skip the line.</div>
-        </div>
-        <div class="event">
-          <div class="event-top"><span class="event-kind">Idea</span><span class="event-time">At leisure</span></div>
-          <div class="event-main">Shopping</div>
-          <div class="event-detail">Conveniently, Rue Saint-Honoré runs right past the hotel; Le Bon Marché on the Left Bank and Galeries Lafayette under its stained-glass dome are both a short ride away. Easy to pair with the d'Orsay, or to do on its own day. En route: the plaque marking the Republic of Texas embassy (1842–43) on Place Vendôme, and Poilâne's legendary bakery two blocks from Le Bon Marché — both from your saved map.</div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Saturday · October 17</div>
-        <div class="day-title">A Free Day <em>in Paris</em></div>
-        <div class="event">
-          <div class="event-top"><span class="event-kind">Day</span><span class="event-time">Open</span></div>
-          <div class="event-main">No plans — on purpose</div>
-          <div class="event-detail">A day to wander, revisit a favorite, or do nothing at all.</div>
-        </div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Idea · Dinner</span><span class="event-time">TBD</span></div>
-          <div class="event-main">Dinner with friends</div>
-          <div class="event-detail">Possibly hosting friends one evening — who, where, and when still taking shape. Could land on any night.</div>
-        </div>
-        <div class="event" style="--accent:var(--kk)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">7:00 PM</span></div>
-          <div class="event-main">Dallas/Fort Worth (DFW) → Dublin (DUB)</div>
-          <div class="event-detail">American Airlines 132 · overnight · seats 4D / 4H<br>Arrives <b>9:45 AM, Oct 18</b> · Record locator <b>OPGXPO</b></div>
-          <div class="tags"><span class="tag">Kyle &amp; Kelsey</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bbook">
-      <div class="bbook-head">
-        <div class="eyebrow">The Little Black Book</div>
-        <h3>Addresses Worth Knowing</h3>
-        <p class="sub">Your saved Google Maps pins, plus picks from Condé Nast Traveler, Monocle, Michelin, Paris by Mouth &amp; the Paris bakers' guild.</p>
-      </div>
-
-      <div class="bb-group">
-        <h4>From Your Saved Map</h4>
-        <div class="bb-item"><b>La Tour Montlhéry — Chez Denise</b> <span class="where">· 5 Rue des Prouvaires, 1st · minutes from the hotel</span><br><span class="why">Old-school Les Halles institution serving until midnight — beef cheeks, escargot, generous everything. Reserve ahead; it fills fast. A natural welcome-dinner pick.</span></div>
-        <div class="bb-item"><b>Montezuma Café</b> <span class="where">· 15 Rue Notre Dame des Victoires, 2nd</span><br><span class="why">Natural wine bar with great music, a short walk from the hotel. Opens 6 PM; closed Sun–Mon.</span></div>
-        <div class="bb-item"><b>Terroirs d'Avenir</b> <span class="where">· 3 Rue du Nil, 2nd</span><br><span class="why">Standout almond croissants on one of the city's great little food streets — the same block as Frenchie. Closed Monday.</span></div>
-        <div class="bb-item"><b>The bouillons</b> <span class="where">· Julien (10th) · Chartier Grands Boulevards (9th) · Racine (6th) · Chartier Montparnasse (14th)</span><br><span class="why">Grand belle-époque dining halls, hearty classics at gentle prices. Julien's art-nouveau room is the showstopper. Most don't take reservations — go before 7 or after 9 to dodge the queue.</span></div>
-        <div class="bb-item"><b>Ambassade du Texas 1842–1843</b> <span class="where">· 1 Place Vendôme, 1st</span><br><span class="why">The plaque marking where the Republic of Texas kept its Paris embassy — high on the façade, easiest spotted with a zoom lens. Five minutes from the hotel, right on the shopping route.</span></div>
-        <div class="bb-item"><b>Mamiche</b> <span class="where">· 45 Rue Condorcet, 9th</span> &nbsp;·&nbsp; <b>The French Bastards</b> <span class="where">· several locations</span><br><span class="why">Mamiche sits on the walk up to Montmartre (closed Sun–Mon); The French Bastards do big, indulgent modern pastries.</span></div>
-        <div class="bb-item"><b>Levain, Le Vin</b> <span class="where">· 83 Rue du Faubourg Saint-Martin, 10th</span><br><span class="why">A 4.9-star sliver of a wine bar — house-baked bread, superb charcuterie, an owner who pairs the wine for you. Closed Sunday.</span></div>
-        <div class="bb-item"><b>Le Machon d'Henri</b> <span class="where">· 8 Rue Guisarde, 6th</span> &nbsp;·&nbsp; <b>Poilâne</b> <span class="where">· 8 Rue du Cherche-Midi, 6th</span><br><span class="why">A tiny Saint-Germain bistro (best for four or fewer; reserve) and the legendary sourdough bakery — both pair perfectly with a Le Bon Marché shopping run.</span></div>
-        <div class="bb-item"><b>Linette</b> <span class="where">· 16 Av. Rapp, 7th</span><br><span class="why">Crowd-pleasing French classics — onion soup, duck confit, steak tartare — right by the Eiffel Tower if a visit ends up on the agenda.</span></div>
-        <div class="bb-item"><b>Place des Vosges</b> <span class="where">· Le Marais</span><br><span class="why">Paris's oldest square, arcaded and lovely — an easy anchor for a Marais wander on the free day.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>Steps From the Hotel</h4>
-        <div class="bb-item"><b>Brasserie du Louvre</b> <span class="where">· inside your hotel</span><br><span class="why">A Paul Bocuse brasserie doing the classics — onion soup, escargot, sole meunière — with a terrace facing the Palais-Royal. The easiest great meal of the trip.</span></div>
-        <div class="bb-item"><b>La Poule au Pot</b> <span class="where">· 9 Rue Vauvilliers, 1st</span><br><span class="why">Jean-François Piège's beloved old-school bistro; a shrine to French classics a few minutes' walk away.</span></div>
-        <div class="bb-item"><b>Loulou</b> <span class="where">· Musée des Arts Décoratifs, 1st</span><br><span class="why">One of the prettiest terraces in Paris, looking over the Tuileries — made for a golden-hour dinner.</span></div>
-        <div class="bb-item"><b>Verjus</b> <span class="where">· behind the Palais-Royal, 1st</span><br><span class="why">Seasonal tasting menu with standout wine pairings; takes private groups of 8–12 — a strong candidate for the dinner with friends.</span></div>
-        <div class="bb-item"><b>Willi's Wine Bar</b> <span class="where">· 13 Rue des Petits-Champs, 1st</span><br><span class="why">An institution since 1980; easygoing, great with larger tables.</span></div>
-        <div class="bb-item"><b>La Bourse et la Vie</b> <span class="where">· 2nd</span><br><span class="why">Celebration-worthy classic bistro with one of the city's best steak frites.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>Up in Montmartre</h4>
-        <div class="bb-item"><b>Le Moulin de la Galette</b> <span class="where">· 18th</span><br><span class="why">Dining beneath the windmill Renoir painted — history with lunch.</span></div>
-        <div class="bb-item"><b>Le Bon et la Butte</b> <span class="where">· 18th</span><br><span class="why">A neighborhood favorite locals return to for the duck confit.</span></div>
-        <div class="bb-item"><b>Mokko / a.lea / Ose</b> <span class="where">· 18th</span><br><span class="why">Michelin's current Montmartre picks — small, modern, market-driven rooms below the basilica.</span></div>
-        <div class="bb-item"><b>Skip Place du Tertre's cafés</b><br><span class="why">Lovely square, forgettable food — walk two streets in any direction instead.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>Boulangerie Detours</h4>
-        <div class="bb-item"><b>Boulangerie du Sentier</b> <span class="where">· 2nd, walkable from the hotel</span><br><span class="why">Crowned best butter croissant in greater Paris for 2026 by the bakers' guild.</span></div>
-        <div class="bb-item"><b>Le Fournil Didot</b> <span class="where">· 103 Rue Didot, 14th</span><br><span class="why">Winner of the 2026 Grand Prix for the best baguette in Paris — worth the detour if you're on the Left Bank.</span></div>
-        <div class="bb-item"><b>Du Pain et des Idées</b> <span class="where">· 10th</span> &nbsp;·&nbsp; <b>Blé Sucré</b> <span class="where">· 12th</span><br><span class="why">Two perennial favorites: a gorgeous 19th-century shop, and what many critics call the city's most refined croissant.</span></div>
-        <div class="bb-item"><b>Le Grenier à Pain</b> <span class="where">· 38 Rue des Abbesses, 18th</span><br><span class="why">A past best-baguette winner conveniently on the Montmartre route.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>For the Shopping Day</h4>
-        <div class="bb-item"><b>Rue Saint-Honoré</b> <span class="where">· out the hotel door</span><br><span class="why">Heritage maisons and newer labels without the Champs-Élysées crush — look for Moynat's handbags and Astier de Villatte's handmade ceramics among the big names.</span></div>
-        <div class="bb-item"><b>Place Vendôme &amp; Rue de la Paix</b> <span class="where">· 1st/2nd</span><br><span class="why">The jewelers' square — Cartier, Boucheron, Piaget — five minutes from the hotel.</span></div>
-        <div class="bb-item"><b>Le Bon Marché</b> <span class="where">· 7th</span><br><span class="why">Paris's oldest department store and still its most elegantly edited.</span></div>
-        <div class="bb-item"><b>Galeries Lafayette Haussmann</b> <span class="where">· 9th</span><br><span class="why">Worth a visit for the stained-glass dome alone.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>From Condé Nast Traveler's 2026 List</h4>
-        <div class="bb-item"><b>Allard</b> <span class="where">· 6th</span><br><span class="why">The magazine's nod to enduring bistro tradition on the Left Bank.</span></div>
-        <div class="bb-item"><b>Le Colvert</b> <span class="where">· reservations scarce</span> &nbsp;·&nbsp; <b>Le Dandelion</b><br><span class="why">Two of the buzzier names on this year's list — creative French cooking, the latter with Asian influences.</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CHAPTER II — ASHFORD -->
-<section class="chapter" id="ashford">
-  <div class="wrap">
-    <div class="chapter-title">
-      <div class="num">Chapter II</div>
-      <h2>Ashford Castle</h2>
-      <div class="range">18 — 24 October · Cong, Co. Mayo</div>
-      <svg class="flourish" viewBox="0 0 90 12" aria-hidden="true"><path d="M2 6 H36 M54 6 H88" stroke="#b08d3e" stroke-width="1"/><circle cx="45" cy="6" r="2.5" fill="none" stroke="#b08d3e"/></svg>
-    </div>
-
-    <div class="stay">
-      <div class="photo" data-wiki="Ashford Castle" role="img" aria-label="Ashford Castle"></div>
-      <div class="eyebrow">In Residence</div>
-      <h3>Ashford Castle</h3>
-      <div class="meta">
-        An 800-year-old castle estate on the shores of Lough Corrib<br>
-        <b>Arrival</b> Sun, Oct 18 &nbsp;·&nbsp; <b>Departure</b> Sat, Oct 24<br>
-        Dinner reserved each evening for six guests
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="day">
-        <div class="day-date">Sunday · October 18</div>
-        <div class="day-title">Everyone <em>to Ireland</em></div>
-        <div class="event" style="--accent:var(--kk)">
-          <div class="event-top"><span class="event-kind">Arrival</span><span class="event-time">9:45 AM</span></div>
-          <div class="event-main">Kyle &amp; Kelsey land in Dublin</div>
-          <div class="event-detail">American Airlines 132 from DFW</div>
-          <div class="tags"><span class="tag">Kyle &amp; Kelsey</span></div>
-        </div>
-        <div class="event" style="--accent:var(--bs)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">11:00 AM</span></div>
-          <div class="event-main">Paris (CDG) → Shannon (SNN)</div>
-          <div class="event-detail">Aer Lingus EI 909 · non-stop, arrives <b>~12:00 PM</b> · Premium Economy · Greg on ref <b>24BTUF</b><br>Shannon is roughly 1¾ hours by car from Ashford Castle</div>
-          <div class="tags"><span class="tag">Brandon &amp; Stephanie</span><span class="tag" style="background:var(--gw)">Greg</span></div>
-        </div>
-        <div class="event" style="--accent:var(--bs)">
-          <div class="event-top"><span class="event-kind">Idea · Lunch</span><span class="event-time">~12:45 PM</span></div>
-          <div class="event-main">Durty Nelly's, Bunratty</div>
-          <div class="event-detail">Trading since 1620, beside Bunratty Castle and only 15 minutes from the Shannon arrivals door — seafood chowder and a first proper pint before the drive north to Cong. Worth booking a table; it fills up.</div>
-          <div class="tags"><span class="tag">Brandon &amp; Stephanie</span><span class="tag" style="background:var(--gw)">Greg</span></div>
-        </div>
-        <div class="event" style="--accent:var(--bk)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">11:15 AM</span></div>
-          <div class="event-main">Paris (CDG) → Dublin (DUB)</div>
-          <div class="event-detail">Aer Lingus EI 523 · arrives <b>12:10 PM</b>, Terminal 2</div>
-          <div class="tags"><span class="tag">Billy &amp; Kelly</span></div>
-        </div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Transfer</span><span class="event-time">TBC</span></div>
-          <div class="event-main">Transfers to Ashford Castle</div>
-          <div class="event-detail">Dublin → Cong is about 3 hours by car; Shannon → Cong about 1¾ hours. Details to follow.</div>
-        </div>
-        <div class="event">
-          <div class="event-top"><span class="event-kind">Dinner</span><span class="event-time">6:00 PM</span></div>
-          <div class="event-main">Stanley's</div>
-          <div class="event-detail">First evening together · table for the family</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Monday · October 19</div>
-        <div class="day-title">Dad's <em>Birthday</em></div>
-        <div class="event birthday">
-          <div class="event-top"><span class="event-kind">Celebration</span><span class="event-time">Morning</span></div>
-          <div class="event-main">Hawk Walk · Ireland's School of Falconry</div>
-          <div class="event-detail">A birthday hour in the castle woods with a Harris's hawk on the glove — the oldest falconry school in Ireland, right on the estate, and consistently rated guests' favorite thing at Ashford. Walks run 9:30 AM – 4 PM; <b>book well ahead</b>, slots go quickly. Time to be confirmed.</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-        <div class="event birthday">
-          <div class="event-top"><span class="event-kind">Birthday Dinner</span><span class="event-time">Evening</span></div>
-          <div class="event-main">Pub dinner in Cong · Pat Cohan's</div>
-          <div class="event-detail">The Quiet Man pub on Main Street, a walkable stroll from the castle gates — fish and chips, scallops, and a room full of John Wayne. Open until 10 PM; reservation to be added.</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Tuesday · October 20</div>
-        <div class="day-title">An Evening at the Cottage</div>
-        <div class="event tbc">
-          <div class="photo" data-wiki="Galway" role="img" aria-label="Galway"></div>
-          <div class="event-top"><span class="event-kind">Idea · Day Trip</span><span class="event-time">Any day this week</span></div>
-          <div class="event-main">Road trip to Galway</div>
-          <div class="event-detail">If the mood strikes, Galway is only about 45 minutes south — the Latin Quarter, the Spanish Arch, and an afternoon trad session at The Crane Bar (music most days from mid-afternoon; the upstairs room is the famous one). Slots into any free daytime, back well before dinner.</div>
-        </div>
-        <div class="event">
-          <div class="event-top"><span class="event-kind">Dinner</span><span class="event-time">6:00 PM</span></div>
-          <div class="event-main">Cullen's at the Cottage</div>
-          <div class="event-detail">Relaxed dining in a thatched cottage on the estate · table for the family</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Wednesday · October 21</div>
-        <div class="day-title">Below the Castle</div>
-        <div class="event">
-          <div class="event-top"><span class="event-kind">Dinner</span><span class="event-time">6:30 PM</span></div>
-          <div class="event-main">The Dungeon</div>
-          <div class="event-detail">Table for six</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Thursday · October 22</div>
-        <div class="day-title">The Grand Dining Room</div>
-        <div class="event">
-          <div class="event-top"><span class="event-kind">Dinner</span><span class="event-time">6:30 PM</span></div>
-          <div class="event-main">George V Dining Room</div>
-          <div class="event-detail">The castle's signature restaurant · table for the family</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Friday · October 23</div>
-        <div class="day-title">A Final Evening Together</div>
-        <div class="event">
-          <div class="event-top"><span class="event-kind">Dinner</span><span class="event-time">6:00 PM</span></div>
-          <div class="event-main">Stanley's</div>
-          <div class="event-detail">Back where the week began · table for the family</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Saturday · October 24</div>
-        <div class="day-title">Farewell Ashford, <em>Hello Dublin</em></div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Transfer</span><span class="event-time">Morning</span></div>
-          <div class="event-main">Check out · drive to Dublin · The Shelbourne</div>
-          <div class="event-detail">Cong to Dublin is about 3 hours. An early start leaves the afternoon free — check in at The Shelbourne on St Stephen's Green. Transfer details to be added.</div>
-        </div>
-        <div class="event">
-          <div class="photo" data-wiki="Guinness Storehouse" role="img" aria-label="Guinness Storehouse"></div>
-          <div class="event-top"><span class="event-kind">Afternoon</span><span class="event-time">~2:30 PM</span></div>
-          <div class="event-main">Guinness Storehouse · tour &amp; a pint</div>
-          <div class="event-detail">Seven floors at St. James's Gate, ending with a pint in the Gravity Bar's 360° view of Dublin. Open until 6 PM Saturdays; <b>book timed tickets ahead</b> to skip the queues — mid-afternoon slots move best.</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Idea · Dinner</span><span class="event-time">TBC</span></div>
-          <div class="event-main">FIRE Steakhouse · the last night all together</div>
-          <div class="event-detail">In the Mansion House on Dawson Street — wood-fired steaks in a grand room. With Kyle &amp; Kelsey flying out tomorrow, tonight is the natural night for it. Open until 10 PM Saturdays; reservations go fast.</div>
-          <div class="tags"><span class="tag all">Everyone</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bbook">
-      <div class="bbook-head">
-        <div class="eyebrow">The Little Black Book</div>
-        <h3>Cong &amp; the West</h3>
-      </div>
-
-      <div class="bb-group">
-        <h4>In &amp; Around Cong</h4>
-        <div class="bb-item"><b>Pat Cohan's — The Quiet Man Bar</b> <span class="where">· Main Street, Cong · walkable from the castle</span><br><span class="why">The village's famous gastropub, with a replica Quiet Man cottage upstairs. Booked for the birthday — also an easy lunch any day.</span></div>
-        <div class="bb-item"><b>Cullen's at the Cottage &amp; the castle venues</b> <span class="where">· on the estate</span><br><span class="why">Already on the dinner schedule — the thatched cottage Tuesday, the Dungeon Wednesday, George V Thursday.</span></div>
-        <div class="bb-item"><b>Lough Corrib &amp; the castle grounds</b><br><span class="why">Beyond the hawk walk: boat trips on the lough, clay shooting, archery, and 350 acres of woodland paths — all bookable through the castle.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>Galway, 45 Minutes South</h4>
-        <div class="bb-item"><b>The Crane Bar</b> <span class="where">· 2 Sea Road, Galway's West End</span><br><span class="why">Your pin — one of Ireland's great trad-music pubs. The room goes quiet for the musicians, which is the whole point. Music from mid-afternoon most days.</span></div>
-        <div class="bb-item"><b>Aniar</b> <span class="where">· 53 Lower Dominick Street</span><br><span class="why">Galway's Michelin-starred table — a tasting menu built entirely from the West of Ireland's larder. Book well ahead if a Galway evening materializes.</span></div>
-        <div class="bb-item"><b>Ard Bia at Nimmos</b> <span class="where">· by the Spanish Arch</span><br><span class="why">The city's most iconic casual table, rustic and riverside — ideal for lunch on a day trip.</span></div>
-        <div class="bb-item"><b>Kai</b> <span class="where">· Sea Road, two doors from The Crane</span><br><span class="why">Beloved seasonal cooking in the West End — lunch here, music next door after.</span></div>
-        <div class="bb-item"><b>Tigh Neachtain</b> <span class="where">· Quay Street</span><br><span class="why">A 19th-century pub at the heart of the Latin Quarter, painted that famous blue — the classic Galway pint stop.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>En Route From Shannon</h4>
-        <div class="bb-item"><b>Durty Nelly's</b> <span class="where">· Bunratty, Co. Clare · 15 min from SNN</span><br><span class="why">Pouring pints since 1620 in the shadow of Bunratty Castle — penciled in as Brandon &amp; Stephanie's arrival lunch on Oct 18.</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CHAPTER III — HOMEWARD -->
-<section class="chapter" id="home"><span id="dublin"></span>
-  <div class="wrap">
-    <div class="chapter-title">
-      <div class="num">Chapter III</div>
-      <h2>Homeward</h2>
-      <div class="range">25 — 29 October</div>
-      <svg class="flourish" viewBox="0 0 90 12" aria-hidden="true"><path d="M2 6 H36 M54 6 H88" stroke="#b08d3e" stroke-width="1"/><circle cx="45" cy="6" r="2.5" fill="none" stroke="#b08d3e"/></svg>
-    </div>
-
-    <div class="stay">
-      <div class="photo" data-wiki="Shelbourne Hotel" role="img" aria-label="The Shelbourne, Dublin"></div>
-      <div class="eyebrow">In Residence</div>
-      <h3>The Shelbourne</h3>
-      <div class="meta">
-        Autograph Collection · 27 St Stephen's Green, on the Green's north side since 1824<br>
-        <b>Check-in</b> Sat, Oct 24 · 3:00 PM &nbsp;·&nbsp; <b>Check-out</b> Wed, Oct 28 · 12:00 PM<br>
-        King 1-Bedroom Suite · <b>Heritage Wing</b> (guaranteed) · 2 adults · additional rooms TBC<br>
-        The Horseshoe Bar is downstairs; O'Donoghue's is around the corner
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="day">
-        <div class="day-date">Sunday · October 25</div>
-        <div class="day-title">First Farewell</div>
-        <div class="event" style="--accent:var(--kk)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">1:00 PM</span></div>
-          <div class="event-main">Dublin (DUB) → Dallas/Fort Worth (DFW)</div>
-          <div class="event-detail">American Airlines 133 · arrives <b>5:55 PM</b> · seats 4D / 4H · Record locator <b>OPGXPO</b></div>
-          <div class="tags"><span class="tag">Kyle &amp; Kelsey</span></div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Sunday – Tuesday · October 25 – 27</div>
-        <div class="day-title">Dublin Days</div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Ideas</span><span class="event-time">Open</span></div>
-          <div class="event-main">The pub circuit &amp; the city at leisure</div>
-          <div class="event-detail">Everything radiates from the Shelbourne's front door: O'Donoghue's around the corner for evening trad, the hotel's own three bars downstairs (the leather-and-brass Horseshoe, the library-like 1824, and No. 27 for closed-loop cocktails and a freezer Martini), O'Neill's near Trinity for a carvery lunch, tweed coats at Kevin &amp; Howlin on Nassau Street (closed Sunday — go Monday or Tuesday before 4:30), the Book of Kells, Grafton Street, and the Green across the road. Plans to take shape as the week unfolds.</div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Wednesday · October 28</div>
-        <div class="day-title">The Last Leg Home</div>
-        <div class="event" style="--accent:var(--bs)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">1:00 PM</span></div>
-          <div class="event-main">Dublin (DUB) → Midland (MAF)</div>
-          <div class="event-detail">IB 4245 / IB 4995, operated by American · one stop, DFW · Business Flexible<br>Arrives <b>9:25 PM</b> · 13h 25m · Airline ref <b>A5RDD7</b></div>
-          <div class="tags"><span class="tag">Brandon &amp; Stephanie</span></div>
-        </div>
-        <div class="event tbc">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">TBC</span></div>
-          <div class="event-main">Billy &amp; Kelly · return travel</div>
-          <div class="event-detail">Transatlantic flights to be added once confirmed.</div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-date">Thursday · October 29</div>
-        <div class="day-title">Greg's Departure</div>
-        <div class="event" style="--accent:var(--gw)">
-          <div class="event-top"><span class="event-kind">Flight</span><span class="event-time">1:00 PM</span></div>
-          <div class="event-main">Dublin (DUB) → Midland (MAF)</div>
-          <div class="event-detail">AA 133 to DFW (1:00 – 5:55 PM, seat 4A), then AA 4172 to Midland (8:05 – 9:25 PM, seat 2A) · Confirmation <b>UIVBDY</b><br>Greg stays one extra night — the Shelbourne reservation ends Oct 28 at noon, so his room for that night is still to be arranged.</div>
-          <div class="tags"><span class="tag" style="background:var(--gw)">Greg</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bbook">
-      <div class="bbook-head">
-        <div class="eyebrow">The Little Black Book</div>
-        <h3>Dublin</h3>
-      </div>
-
-      <div class="bb-group">
-        <h4>Your Picks, Confirmed</h4>
-        <div class="bb-item"><b>Guinness Storehouse</b> <span class="where">· St. James's Gate</span><br><span class="why">On the schedule for arrival day, Oct 24. Pre-book timed tickets; the Gravity Bar pint at the top is included.</span></div>
-        <div class="bb-item"><b>FIRE Steakhouse</b> <span class="where">· The Mansion House, Dawson Street</span><br><span class="why">Wood-fired steaks and seafood in a grand room beside the Lord Mayor's residence. Penciled in for the Oct 24 group dinner — reserve early, tables are hard to get.</span></div>
-        <div class="bb-item"><b>O'Donoghue's</b> <span class="where">· 15 Merrion Row · beside the Shelbourne</span><br><span class="why">You had it right — steps from St Stephen's Green. The pub where The Dubliners got their start; live trad most nights and Sunday afternoons. Don't confuse it with the other O'Donoghue's on Suffolk Street.</span></div>
-        <div class="bb-item"><b>O'Neill's Pub &amp; Kitchen</b> <span class="where">· 2 Suffolk Street</span><br><span class="why">A warren of snugs near Trinity, famous for its carvery — order at the bar, find a corner. Better for lunch and stew than a fancy night.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>Worth Adding</h4>
-        <div class="bb-item"><b>Kevin &amp; Howlin</b> <span class="where">· 31 Nassau Street · across from Trinity</span><br><span class="why">Dublin's Donegal tweed institution — jackets, caps, waistcoats, and made-to-measure suits. Note the hours: 10:30 AM – 4:30 PM, closed Sundays, so plan it for Monday or Tuesday.</span></div>
-        <div class="bb-item"><b>Chapter One</b> <span class="where">· Parnell Square</span><br><span class="why">Dublin's two-Michelin-star standard-bearer under chef Mickael Viljanen — the city's blowout meal if one is wanted.</span></div>
-        <div class="bb-item"><b>Glovers Alley</b> <span class="where">· The Fitzwilliam Hotel, St Stephen's Green</span><br><span class="why">Elegant Michelin-listed dining a short walk around the Green from the Shelbourne. The lunch menu is notably good value.</span></div>
-        <div class="bb-item"><b>D'Olier Street</b> <span class="where">· opposite Trinity College</span><br><span class="why">A Michelin star within two years of opening; precise, ingredient-led cooking in a Victorian corner room.</span></div>
-        <div class="bb-item"><b>Uno Mas</b> <span class="where">· Aungier Street</span><br><span class="why">Spanish tapas with Irish produce — a Condé Nast Traveller Dublin pick, relaxed enough for a no-plans evening.</span></div>
-        <div class="bb-item"><b>Bread 41</b> <span class="where">· Pearse Street</span><br><span class="why">The bakery on every Dublin best-of list — the morning pastry stop before the flight home.</span></div>
-      </div>
-
-      <div class="bb-group">
-        <h4>New Since Your Last Visit · All Walkable</h4>
-        <div class="bb-item"><b>Etto</b> <span class="where">· 18 Merrion Row · beside O'Donoghue's</span><br><span class="why">Tiny, stylish, Italian-leaning, in the Michelin guide and great value for the quality — right on your block. Bookings open 60 days ahead and it fills fast; this is the one to reserve early.</span></div>
-        <div class="bb-item"><b>9 Below</b> <span class="where">· 9 St Stephen's Green · across the Green</span><br><span class="why">A discreet Georgian-basement cocktail bar in the old Hibernian Club — arched ceilings, rare-whiskey cabinet, a tight list of beautifully built drinks. Closed Mon–Tues; the kind of hidden room you'd never find without being told.</span></div>
-        <div class="bb-item"><b>The Ivy Asia</b> <span class="where">· near Trinity / Dawson Street</span><br><span class="why">The Ivy Group's first international opening — opulent pan-Asian, more night-out than quiet dinner. New in 2026 and drawing crowds.</span></div>
-        <div class="bb-item"><b>Comet</b> <span class="where">· King Street South, St Stephen's Green</span><br><span class="why">A 2026 opening from chef Joshua Lane, moments off the Green — one of the freshest tables in the neighbourhood.</span></div>
-        <div class="bb-item"><b>Laszlo's</b> <span class="where">· Arthaus Hotel, Mercer Street</span><br><span class="why">A handsome new cocktail bar — green booths, a big mural, premium-spirit drinks — a few minutes west of the Green.</span></div>
-        <div class="bb-item"><b>Sophie's at The Dean</b> <span class="where">· Harcourt Street rooftop</span><br><span class="why">Glass-walled rooftop with near-360° views over the city and the mountains, wood-fired pizzas and cocktails. (Rooftop terrace reopened spring 2026.) A short stroll south-west.</span></div>
-        <div class="bb-item"><b>Mr. Fox</b> <span class="where">· Parnell Square</span> &nbsp;·&nbsp; <b>Amai by Viktor</b> <span class="where">· above The Corkscrew</span><br><span class="why">Two of the city's most-talked-about rooms if you fancy a proper dinner out — Mr. Fox for inventive contemporary Irish, Amai a buzzy Michelin-listed newcomer tipped for a star.</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GOOD TO KNOW -->
-<section class="notes">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Before You Go</div>
-      <h2>Good to Know</h2>
-    </div>
-    <div class="note-list">
-      <div class="note"><span><b>Lounge access, Dublin:</b> Billy &amp; Kelly hold an Aer Lingus Lounge pass for the Oct 14 departure (booking 2SGCXB). It's valid for the Aer Lingus Lounge before US preclearance — not the 51st&amp;Green Lounge.</span></div>
-      <div class="note"><span><b>Dinner dress:</b> Ashford Castle's evening venues, particularly the George V, lean smart-elegant. Pack accordingly.</span></div>
-      <div class="note"><span><b>Time zones:</b> Ireland and Paris are 6 and 7 hours ahead of Texas, respectively. Overnight flights land the following morning.</span></div>
-      <div class="note"><span><b>Headcounts:</b> the Ashford dinners are currently reserved for six. With Greg joining, the party is seven — or six if Kelsey can't make it. Once that's settled, the castle dinners, hawk walk, Pat Cohan's, FIRE, and Guinness tickets all need their numbers confirmed.</span></div>
-      <div class="note"><span><b>Still to come:</b> the possible dinner with friends in Paris, all ground transfers, the hawk walk time slot and Pat Cohan's reservation for Oct 19, FIRE and Guinness Storehouse bookings, Billy &amp; Kelly's return flights, and a room for Greg's night of Oct 28. The day ideas throughout are entirely optional.</span></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="monogram">W</div>
-  <div class="fline">Bon voyage &amp; sláinte</div>
-  THE WILLIAMS FAMILY · OCTOBER 2026
+<footer class="wrap">
+  <p>Everything here is drawn from the confirmations on file as of 2 September 2026. Times are local. Flights, rooms and dinners change — check the confirmation numbers against your own email before you travel.</p>
 </footer>
 
 <script>
-// Loads landmark photos from Wikipedia/Wikimedia Commons at view time.
-// If offline or an image is unavailable, the band stays collapsed and the page looks fine without it.
-document.querySelectorAll('.photo[data-wiki]').forEach(function(el){
-  var title = el.getAttribute('data-wiki');
-  fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(title))
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(d){
-      if(!d) return;
-      var src = d.thumbnail && d.thumbnail.source ? d.thumbnail.source.replace(/\/\d+px-/, '/1100px-') : (d.originalimage && d.originalimage.source);
-      if(!src) return;
-      var img = new Image();
-      img.onload = function(){
-        el.style.backgroundImage = "url('" + src + "')";
-        el.classList.add('loaded');
-      };
-      img.src = src;
-    })
-    .catch(function(){});
+/* =========================================================================
+   EDIT BELOW. Everything on the page is built from these three lists.
+   who codes:  bs = Brandon & Steph · bk = Billy & Kelly
+               kk = Kyle & Kelsey   · g  = Greg   · all = everyone
+   kinds:      flight · transfer · stay · meal · idea · watch · open
+   ========================================================================= */
+
+const SEGMENTS = [
+  {id:"out",     cls:"seg-transit", title:"Getting there",  where:"Midland → Dallas → Dublin → Paris", days:["10-12","10-13"]},
+  {id:"paris",   cls:"seg-paris",   title:"Paris",          where:"Hôtel du Louvre · Place André Malraux, 75001", days:["10-14","10-15","10-16","10-17","10-18"]},
+  {id:"ashford", cls:"seg-ashford", title:"Ashford Castle", where:"Cong, Co. Mayo · 18–24 October", days:["10-19","10-20","10-21","10-22","10-23","10-24"]},
+  {id:"dublin",  cls:"seg-dublin",  title:"Dublin",         where:"The Shelbourne · 27 St Stephen's Green", days:["10-25","10-26","10-27","10-28","10-29"]}
+];
+
+const EVENTS = [
+  /* ---------- Monday 12 October ---------- */
+  {d:"10-12", who:["bs"], kind:"flight", time:"2:23 pm", title:"Midland → Dallas/Fort Worth → Dublin",
+   note:"AA 3512, then IB 4386 operated by American. Business Flexible. Lands Dublin 9:45 am Tuesday."},
+  {d:"10-12", who:["g"], kind:"flight", time:"2:23 pm", title:"Midland → Dallas/Fort Worth",
+   note:"AA 3512, seat 2A. Arrives DFW 3:49 pm."},
+  {d:"10-12", who:["g"], kind:"flight", time:"7:00 pm", title:"Dallas/Fort Worth → Dublin",
+   note:"AA 132, seat 4A. Lands Dublin 9:45 am Tuesday."},
+
+  /* ---------- Tuesday 13 October ---------- */
+  {d:"10-13", who:["bs","g"], kind:"flight", time:"9:45 am", title:"Land at Dublin",
+   note:"About 3½ hours on the ground before the Paris flight."},
+  {d:"10-13", who:["bs"], kind:"flight", time:"1:30 pm", title:"Dublin → Paris CDG",
+   note:"Aer Lingus EI 526, Premium Economy. Seats 1D and 1F. Arrives 4:20 pm."},
+  {d:"10-13", who:["g"], kind:"flight", time:"1:30 pm", title:"Dublin → Paris CDG",
+   note:"Aer Lingus EI 526, booking 24BTUF. Arrives 4:20 pm. One 10 kg bag."},
+  {d:"10-13", who:["bs"], kind:"stay", time:"4:00 pm", title:"Check in — Hôtel du Louvre",
+   note:"Pissarro Suite, five nights through Sunday. Confirmation 2382132947."},
+  {d:"10-13", who:["g"], kind:"watch", title:"Greg has no Paris room tonight",
+   note:"He lands at 4:20 pm but his Hôtel du Louvre reservation starts tomorrow."},
+  {d:"10-13", who:["bk"], kind:"flight", time:"4:15 pm", title:"Midland → Dallas/Fort Worth → Dublin",
+   note:"American via DFW. Lands Dublin 9:45 am Wednesday."},
+
+  /* ---------- Wednesday 14 October ---------- */
+  {d:"10-14", who:["bk"], kind:"flight", time:"9:45 am", title:"Land at Dublin"},
+  {d:"10-14", who:["bk"], kind:"flight", time:"1:00 pm", title:"Dublin → Paris CDG",
+   note:"Aer Lingus EI 526. Arrives 3:50 pm. Lounge pass held at Dublin, ref 2SGCXB."},
+  {d:"10-14", who:["bk","g"], kind:"stay", time:"Afternoon", title:"Check in — Hôtel du Louvre",
+   note:"Empire Suite, four nights, the three of them sharing. Hotel confirmation 150852RA008035."},
+
+  /* ---------- Thursday 15 – Saturday 17 October ---------- */
+  {d:"10-15", who:["all"], kind:"open", title:"Paris — open day",
+   note:"Nothing scheduled yet."},
+  {d:"10-16", who:["all"], kind:"open", title:"Paris — open day",
+   note:"One of these three nights is the dinner with friends."},
+  {d:"10-17", who:["all"], kind:"open", title:"Paris — open day"},
+  {d:"10-17", who:["kk"], kind:"flight", time:"7:00 pm", title:"Dallas/Fort Worth → Dublin",
+   note:"AA 132, seats 4D and 4H. Confirmation OPGXPO. Lands 9:45 am Sunday."},
+
+  /* ---------- Sunday 18 October ---------- */
+  {d:"10-18", who:["bs","g"], kind:"stay", time:"By 7:45 am", title:"Leave the hotel for CDG",
+   note:"Checkout runs to 11:00 am, but the flight is at 11:00 — plan to be at the airport by 9:00."},
+  {d:"10-18", who:["bs","g"], kind:"flight", time:"11:00 am", title:"Paris CDG → Shannon",
+   note:"Aer Lingus EI 909. Lands around noon. Roughly 1¼ hours by road to Cong."},
+  {d:"10-18", who:["bk"], kind:"flight", time:"11:15 am", title:"Paris CDG → Dublin",
+   note:"Aer Lingus EI 523. Lands 12:10 pm."},
+  {d:"10-18", who:["kk"], kind:"flight", time:"9:45 am", title:"Land at Dublin"},
+  {d:"10-18", who:["kk"], kind:"transfer", time:"9:45 am", title:"Car to Ashford Castle — Irish Chauffeurs",
+   note:"Luxury saloon, meeting you at Dublin Terminal 2. Job H36170. About 3¼ hours to Cong, so expect the castle early afternoon."},
+  {d:"10-18", who:["bk"], kind:"transfer", time:"12:10 pm", title:"Car to Ashford Castle — Irish Chauffeurs",
+   note:"MPV, meeting you at Dublin Terminal 2. Job H36169. About 3¼ hours to Cong — arrival at the castle around 4:00 pm, ahead of the 6:00 dinner."},
+  {d:"10-18", who:["bs","g"], kind:"transfer", time:"After 12:00 pm", title:"Car to Ashford Castle — arranged by the castle",
+   note:"Booked directly through Ashford. Shannon to Cong is roughly 1¼ hours, so the castle by early afternoon."},
+  {d:"10-18", who:["all"], kind:"stay", time:"Afternoon", title:"Arrive at Ashford Castle",
+   note:"Six nights, through Saturday the 24th."},
+  {d:"10-18", who:["all"], kind:"meal", time:"6:00 pm", title:"Dinner at Stanley's",
+   note:"Held for 6."},
+
+  /* ---------- Monday 19 October ---------- */
+  {d:"10-19", who:["all"], kind:"watch", title:"Birthday dinner — nothing held",
+   note:"The one night at Ashford without a table. Everything else that week is booked."},
+
+  /* ---------- Tuesday 20 – Friday 23 October ---------- */
+  {d:"10-20", who:["all"], kind:"meal", time:"6:00 pm", title:"Dinner at Cullen's at the Cottage",
+   note:"Held for 6."},
+  {d:"10-21", who:["all"], kind:"meal", time:"6:30 pm", title:"Dinner in the Dungeon",
+   note:"Held for 6."},
+  {d:"10-22", who:["all"], kind:"meal", time:"6:30 pm", title:"Dinner in the George V",
+   note:"Held for 6."},
+  {d:"10-23", who:["all"], kind:"meal", time:"6:00 pm", title:"Dinner at Stanley's",
+   note:"Held for 6."},
+
+  /* ---------- Saturday 24 October ---------- */
+  {d:"10-24", who:["all"], kind:"stay", time:"Morning", title:"Check out of Ashford Castle",
+   note:"Cong to Dublin is about 3¼ hours."},
+  {d:"10-24", who:["bs"], kind:"stay", time:"3:00 pm", title:"Check in — The Shelbourne",
+   note:"Heritage Wing, one-bedroom king suite. Four nights, €4,481."},
+  {d:"10-24", who:["kk"], kind:"open", title:"Dublin room not yet booked",
+   note:"Kyle and Kelsey fly home tomorrow at 1:00 pm and need a bed tonight."},
+
+  /* ---------- Sunday 25 October ---------- */
+  {d:"10-25", who:["kk"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth",
+   note:"AA 133, seats 4D and 4H. Arrives 5:55 pm."},
+  {d:"10-25", who:["bs","bk","g"], kind:"open", title:"Dublin — open day"},
+
+  /* ---------- Monday 26 – Tuesday 27 October ---------- */
+  {d:"10-26", who:["bs","bk","g"], kind:"open", title:"Dublin — open day",
+   note:"Guinness Storehouse and dinner at FIRE both still to book."},
+  {d:"10-27", who:["bs","bk","g"], kind:"open", title:"Dublin — open day"},
+
+  /* ---------- Wednesday 28 October ---------- */
+  {d:"10-28", who:["bs"], kind:"stay", time:"12:00 pm", title:"Check out of The Shelbourne"},
+  {d:"10-28", who:["bs"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth → Midland",
+   note:"IB 4245 and IB 4995, operated by American. Home at 9:25 pm."},
+  {d:"10-28", who:["bk","g"], kind:"watch", title:"One more night in Dublin, room unconfirmed",
+   note:"Greg and Billy &amp; Kelly all fly out tomorrow. Nothing on file for tonight."},
+
+  /* ---------- Thursday 29 October ---------- */
+  {d:"10-29", who:["g"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth → Midland",
+   note:"AA 133 seat 4A, then AA 4172 seat 2A. Home at 9:25 pm. Confirmation UIVBDY."},
+  {d:"10-29", who:["bk"], kind:"flight", time:"1:00 pm", title:"Dublin → Dallas/Fort Worth → Midland",
+   note:"AA 133 via DFW. Home at 9:51 pm."}
+];
+
+const PARTIES = [
+  {who:"bs", name:"Brandon &amp; Steph", sub:"Trip 1010973178 · airline ref A5RDD7 · agency ref 4LPYUM · Aer Lingus ref 2I4LMW",
+   legs:[
+     {day:"Oct 12", body:"<b>MAF 2:23 pm → DUB 9:45 am +1</b>", meta:"AA 3512 · IB 4386 operated by American · one stop at DFW · Business Flexible"},
+     {day:"Oct 13", body:"<b>DUB 1:30 pm → CDG 4:20 pm</b>", meta:"Aer Lingus EI 526 · Premium Economy · seats 1D, 1F"},
+     {day:"Oct 18", body:"<b>CDG 11:00 am → SNN 12:00 pm</b>", meta:"Aer Lingus EI 909 · seats not yet assigned"},
+     {day:"Oct 18", body:"<b>Shannon → Ashford Castle</b>", meta:"Car booked directly through the castle"},
+     {day:"Oct 28", body:"<b>DUB 1:00 pm → MAF 9:25 pm</b>", meta:"IB 4245 · IB 4995 operated by American · one stop at DFW"},
+     {day:"Stays", body:"<b>Hôtel du Louvre</b> · Pissarro Suite · Oct 13–18", meta:"Confirmation 2382132947 · $139.77 in fees due at the property"},
+     {day:"", body:"<b>The Shelbourne</b> · Heritage Wing king suite · Oct 24–28", meta:"€4,481 total · held on Visa"}
+   ]},
+  {who:"bk", name:"Billy &amp; Kelly", sub:"American booked through Amex Travel · Aer Lingus ref 2SGCXB",
+   legs:[
+     {day:"Oct 13", body:"<b>MAF 4:15 pm → DUB 9:45 am +1</b>", meta:"American · one stop at DFW"},
+     {day:"Oct 14", body:"<b>DUB 1:00 pm → CDG 3:50 pm</b>", meta:"Aer Lingus EI 526 · lounge access at Dublin included"},
+     {day:"Oct 18", body:"<b>CDG 11:15 am → DUB 12:10 pm</b>", meta:"Aer Lingus EI 523"},
+     {day:"Oct 18", body:"<b>Dublin T2 12:10 pm → Ashford Castle</b>", meta:"Irish Chauffeurs · MPV · job H36169 · €700"},
+     {day:"Oct 29", body:"<b>DUB 1:00 pm → MAF 9:51 pm</b>", meta:"AA 133 · one stop at DFW"},
+     {day:"Stays", body:"<b>Hôtel du Louvre</b> · Empire Suite · Oct 14–18 · sharing with Greg", meta:"Hotel confirmation 150852RA008035 · Dublin room for Oct 24–29 not yet on file"}
+   ]},
+  {who:"kk", name:"Kyle &amp; Kelsey", sub:"Confirmation OPGXPO · Ireland only, no Paris leg · Kelsey still tentative",
+   legs:[
+     {day:"Oct 17", body:"<b>DFW 7:00 pm → DUB 9:45 am +1</b>", meta:"AA 132 · seats 4D, 4H"},
+     {day:"Oct 18", body:"<b>Dublin T2 9:45 am → Ashford Castle</b>", meta:"Irish Chauffeurs · luxury saloon · job H36170 · €600"},
+     {day:"Oct 25", body:"<b>DUB 1:00 pm → DFW 5:55 pm</b>", meta:"AA 133 · seats 4D, 4H"},
+     {day:"Stays", body:"Ashford Castle Oct 18–24 · Dublin night of the 24th not yet booked", meta:""}
+   ]},
+  {who:"g", name:"Greg", sub:"Confirmation UIVBDY · AAdvantage 7A95YC4 · Aer Lingus ref 24BTUF · returns a day after the group",
+   legs:[
+     {day:"Oct 12", body:"<b>MAF 2:23 pm → DFW 3:49 pm</b>", meta:"AA 3512 · seat 2A"},
+     {day:"Oct 12", body:"<b>DFW 7:00 pm → DUB 9:45 am +1</b>", meta:"AA 132 · seat 4A"},
+     {day:"Oct 13", body:"<b>DUB 1:30 pm → CDG 4:20 pm</b>", meta:"Aer Lingus EI 526 · one 10 kg bag"},
+     {day:"Oct 18", body:"<b>CDG 11:00 am → SNN 11:50 am</b>", meta:"Aer Lingus EI 909"},
+     {day:"Oct 18", body:"<b>Shannon → Ashford Castle</b>", meta:"Car booked directly through the castle"},
+     {day:"Oct 29", body:"<b>DUB 1:00 pm → DFW 5:55 pm</b>", meta:"AA 133 · seat 4A"},
+     {day:"Oct 29", body:"<b>DFW 8:05 pm → MAF 9:25 pm</b>", meta:"AA 4172 · seat 2A"},
+     {day:"Stays", body:"<b>Hôtel du Louvre</b> · Empire Suite · Oct 14–18 · sharing with Billy &amp; Kelly", meta:"Hotel confirmation 150852RA008035 · booking ZO-AX1029-76092"},
+     {day:"", body:"Night of Oct 13 in Paris and night of Oct 28 in Dublin not booked", meta:""}
+   ]}
+];
+
+const IDEAS = [
+  {seg:"paris", title:"Dinner with friends in Paris", note:"Any night from the 14th to the 17th. Still to pick a date and a table."},
+  {seg:"ashford", title:"P.J. Flaherty's, Salthill — Galway", note:"Seafront pub on the Salthill promenade, about 45 minutes from Cong. Well-known Guinness, small and local rather than the Shop Street crowds. Pairs with an afternoon in Galway city and a walk along the bay."},
+  {seg:"ashford", title:"Hawk walk at the falconry school", note:"On the castle grounds. Small groups, books up early — a morning slot would sit well before an afternoon in Galway."},
+  {seg:"dublin", title:"Guinness Storehouse", note:"Timed entry, book ahead. Gravity Bar at the end."},
+  {seg:"dublin", title:"FIRE Steakhouse, Mansion House", note:"Dawson Street, a few minutes' walk from The Shelbourne."}
+];
+
+/* ========================= rendering ========================= */
+const MONTHS = {"10":"October"};
+const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const KIND_ORDER = {flight:0, transfer:1, stay:2, meal:3, idea:4, watch:5, open:6};
+
+function dayLabel(key){
+  const [m,d] = key.split("-").map(Number);
+  const dt = new Date(2026, m-1, d);
+  return {dow: DOW[dt.getDay()], num: d, mon: MONTHS[String(m)]};
+}
+
+function eventCard(ev){
+  const el = document.createElement("article");
+  el.className = "ev " + ev.kind;
+  el.dataset.who = ev.who.join(" ");
+  let html = "";
+  if (ev.time) html += `<div class="ev-time">${ev.time}</div>`;
+  html += `<p class="ev-title">${ev.title}</p>`;
+  if (ev.note) html += `<p class="ev-note">${ev.note}</p>`;
+  if (!ev.who.includes("all")) {
+    const names = ev.who.map(w => (PARTIES.find(p=>p.who===w)||{}).name || w).join(" · ");
+    html += `<p class="ev-who">${names}</p>`;
+  }
+  el.innerHTML = html;
+  return el;
+}
+
+const schedule = document.getElementById("schedule");
+
+SEGMENTS.forEach(seg => {
+  const section = document.createElement("section");
+  section.className = "seg " + seg.cls;
+  section.id = seg.id;
+
+  const head = document.createElement("div");
+  head.className = "seg-head";
+  head.innerHTML = `<h2>${seg.title}</h2><span class="where">${seg.where}</span>`;
+  section.appendChild(head);
+
+  seg.days.forEach(key => {
+    const evs = EVENTS.filter(e => e.d === key)
+                      .sort((a,b) => (KIND_ORDER[a.kind]??9) - (KIND_ORDER[b.kind]??9));
+    if (!evs.length) return;
+    const lab = dayLabel(key);
+    const day = document.createElement("div");
+    day.className = "day";
+    day.dataset.day = key;
+    const stamp = document.createElement("div");
+    stamp.className = "dstamp";
+    stamp.innerHTML = `<span class="dow">${lab.dow}</span><span class="num">${lab.num}</span><span class="mon">${lab.mon}</span>`;
+    const box = document.createElement("div");
+    box.className = "events";
+    evs.forEach(e => box.appendChild(eventCard(e)));
+    day.appendChild(stamp); day.appendChild(box);
+    section.appendChild(day);
+  });
+
+  schedule.appendChild(section);
 });
-</script>
-<script>
-// ---- App layer: tap-through details, live links, countdown/next-up ticker ----
-(function(){
-  var MONTHS={January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11};
-  function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
-  function parseDayDate(t){var m=t.match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s*·?\s*(\d{1,2})/)||t.match(/·\s*(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})/);if(!m)return null;return new Date(2026,MONTHS[m[1]],+m[2]);}
-  function parseTime(t){var m=t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);if(!m)return null;var h=(+m[1])%12;if(/pm/i.test(m[3]))h+=12;return{h:h,mi:+m[2]};}
-  function cityFor(el){var s=el.closest('section');if(!s)return'';if(s.id==='paris')return'Paris, France';if(s.id==='ashford')return'Cong, Ireland';if(s.id==='home')return'Dublin, Ireland';return'';}
 
-  // Tag day blocks with real dates
-  document.querySelectorAll('.day').forEach(function(d){
-    var dd=d.querySelector('.day-date');if(!dd)return;
-    var date=parseDayDate(dd.textContent);if(!date)return;
-    d.dataset.date=key(date);
+/* ideas section */
+const ideasSec = document.createElement("section");
+ideasSec.className = "seg";
+ideasSec.id = "ideas";
+ideasSec.innerHTML = `<div class="seg-head"><h2>Ideas &amp; options</h2><span class="where">Not booked, not scheduled — pick what appeals</span></div>`;
+const ideaWrap = document.createElement("div");
+ideaWrap.className = "day";
+ideaWrap.style.gridTemplateColumns = "1fr";
+const ideaBox = document.createElement("div");
+ideaBox.className = "events";
+IDEAS.forEach(i => {
+  const el = document.createElement("article");
+  el.className = "ev idea";
+  el.innerHTML = `<p class="ev-title">${i.title}</p><p class="ev-note">${i.note}</p>`;
+  ideaBox.appendChild(el);
+});
+ideaWrap.appendChild(ideaBox);
+ideasSec.appendChild(ideaWrap);
+schedule.appendChild(ideasSec);
+
+/* flights reference */
+const ref = document.getElementById("flights");
+ref.innerHTML = `<h2>Flights &amp; confirmations</h2>`;
+PARTIES.forEach(p => {
+  const d = document.createElement("div");
+  d.className = "party";
+  d.dataset.who = p.who;
+  d.innerHTML = `<h3>${p.name}</h3><p class="sub">${p.sub}</p>` +
+    `<div class="legs">` + p.legs.map(l =>
+      `<div class="leg"><div class="lday">${l.day}</div><div class="lbody">${l.body}${l.meta?`<span class="lmeta">${l.meta}</span>`:""}</div></div>`
+    ).join("") + `</div>`;
+  ref.appendChild(d);
+});
+
+/* filter */
+const chips = document.querySelectorAll("#who-filter .chip");
+function applyFilter(who){
+  document.querySelectorAll(".ev[data-who]").forEach(el => {
+    const list = el.dataset.who.split(" ");
+    const show = who === "all" || list.includes("all") || list.includes(who);
+    el.classList.toggle("hidden", !show);
   });
-
-  // Build a schedule of every timed event
-  var sched=[];
-  document.querySelectorAll('.day[data-date]').forEach(function(d){
-    d.querySelectorAll('.event').forEach(function(ev){
-      var t=ev.querySelector('.event-time'),main=ev.querySelector('.event-main');
-      if(!t||!main)return;
-      var tm=parseTime(t.textContent);if(!tm)return;
-      var p=d.dataset.date.split('-');
-      var dt=new Date(+p[0],+p[1]-1,+p[2],tm.h,tm.mi);
-      sched.push({when:dt,label:main.textContent.trim()});
-    });
+  document.querySelectorAll(".day[data-day]").forEach(day => {
+    const any = day.querySelector(".ev:not(.hidden)");
+    day.classList.toggle("hidden", !any);
   });
-  sched.sort(function(a,b){return a.when-b.when;});
-
-  // Ticker under the chapter nav
-  var nav=document.querySelector('.chapnav');
-  if(nav){
-    var ticker=document.createElement('div');ticker.className='ticker';
-    var now=new Date(),start=new Date(2026,9,12),end=new Date(2026,9,30);
-    if(now<start){
-      var dleft=Math.ceil((start-now)/86400000);
-      ticker.innerHTML='✦ <b>'+dleft+' day'+(dleft===1?'':'s')+'</b> until departure · tap any card for details';
-    }else if(now<end){
-      var next=null;for(var i=0;i<sched.length;i++){if(sched[i].when>now){next=sched[i];break;}}
-      ticker.innerHTML=next?'Up next · <b>'+next.label+'</b> · '+next.when.toLocaleString([],{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'✦ <b>Final stretch</b> — safe travels home';
-    }else{
-      ticker.innerHTML='✦ <b>Bon voyage & sláinte</b> — what a trip it was';
-    }
-    nav.insertAdjacentElement('afterend',ticker);
-  }
-
-  // Today button (appears only during the trip)
-  var pill=document.createElement('button');pill.className='today-pill';pill.textContent='Today';
-  document.body.appendChild(pill);
-  function showToday(){
-    var n=new Date(),k=key(n);
-    var target=document.querySelector('.day[data-date="'+k+'"]');
-    if(n>=new Date(2026,9,12)&&n<new Date(2026,9,30)&&target){
-      pill.style.display='block';
-      pill.onclick=function(){target.scrollIntoView({behavior:'smooth',block:'start'});};
-    }
-  }
-  showToday();
-
-  // Bottom sheet
-  var bd=document.createElement('div');bd.className='sheet-backdrop';
-  bd.innerHTML='<div class="sheet" role="dialog" aria-modal="true"><div class="sheet-handle"></div><div id="sheetBody"></div><div class="sheet-actions" id="sheetActions"></div></div>';
-  document.body.appendChild(bd);
-  function closeSheet(){bd.classList.remove('open');document.body.style.overflow='';}
-  bd.addEventListener('click',function(e){if(e.target===bd)closeSheet();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet();});
-  function openSheet(html,actions){
-    document.getElementById('sheetBody').innerHTML=html;
-    var act=document.getElementById('sheetActions');act.innerHTML='';
-    actions.forEach(function(a){act.appendChild(a);});
-    bd.classList.add('open');document.body.style.overflow='hidden';
-  }
-  function mapsLink(q,label){
-    var a=document.createElement('a');
-    a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
-    a.target='_blank';a.rel='noopener';a.textContent=label||'Open in Maps';return a;
-  }
-  function copyBtn(code){
-    var b=document.createElement('button');b.textContent='Copy ref '+code;
-    b.addEventListener('click',function(e){
-      e.stopPropagation();
-      if(navigator.clipboard){navigator.clipboard.writeText(code);b.textContent='Copied '+code+' ✓';}
-    });
-    return b;
-  }
-  function refActions(scope,actions){
-    scope.querySelectorAll('b').forEach(function(b){
-      var t=b.textContent.trim();
-      if(/^[A-Z0-9]{5,16}$/.test(t))actions.push(copyBtn(t));
-    });
-  }
-
-  // Event cards → detail sheet
-  document.querySelectorAll('.event').forEach(function(ev){
-    ev.dataset.tap='1';
-    ev.addEventListener('click',function(){
-      var kind=(ev.querySelector('.event-kind')||{textContent:''}).textContent;
-      var time=(ev.querySelector('.event-time')||{textContent:''}).textContent;
-      var main=(ev.querySelector('.event-main')||{textContent:''}).textContent;
-      var detail=ev.querySelector('.event-detail');
-      var photo=ev.querySelector('.photo.loaded');
-      var day=ev.closest('.day');var dd=day?day.querySelector('.day-date'):null;
-      var html='';
-      if(photo)html+='<div class="sphoto" style="background-image:'+photo.style.backgroundImage+'"></div>';
-      if(dd)html+='<div class="sdate">'+dd.textContent+'</div>';
-      html+='<div class="skind">'+kind+(time?' · '+time:'')+'</div><h3>'+main+'</h3>';
-      if(detail)html+='<div class="sbody">'+detail.innerHTML+'</div>';
-      var actions=[];
-      // Card-specific link (e.g., the Montmartre walking-tour map)
-      if(ev.dataset.link){
-        var al=document.createElement('a');
-        al.href=ev.dataset.link;al.target='_blank';al.rel='noopener';
-        al.textContent=ev.dataset.linklabel||'Open link';
-        actions.push(al);
-      }
-      // Live flight tracking links
-      var seen={},m,re=/\b(AA|EI|IB)\s?0?(\d{2,4})\b/g,txt=ev.textContent;
-      while((m=re.exec(txt))){
-        var code=m[1]+m[2];
-        if(!seen[code]){seen[code]=1;
-          var a=document.createElement('a');
-          a.href='https://www.flightaware.com/live/flight/'+code;
-          a.target='_blank';a.rel='noopener';a.textContent='Track flight '+m[1]+' '+m[2];
-          actions.push(a);
-        }
-      }
-      // Maps for place-based cards
-      if(/Dinner|Hotel|Lunch|Birthday|Celebration|Afternoon/i.test(kind)){
-        var q=main.split('·')[0].trim()+' '+cityFor(ev);
-        actions.push(mapsLink(q));
-      }
-      if(detail)refActions(detail,actions);
-      openSheet(html,actions);
-    });
+  document.querySelectorAll(".seg[id]").forEach(seg => {
+    if (seg.id === "ideas") return;
+    const any = seg.querySelector(".day:not(.hidden)");
+    seg.classList.toggle("hidden", !any);
   });
-
-  // Address book entries → detail sheet with maps
-  document.querySelectorAll('.bb-item').forEach(function(it){
-    var b=it.querySelector('b');if(!b)return;
-    it.dataset.tap='1';
-    it.addEventListener('click',function(){
-      var name=b.textContent.trim();
-      var where=it.querySelector('.where'),why=it.querySelector('.why');
-      var html='<div class="skind">Address Book</div><h3>'+name+'</h3><div class="sbody">'+(where?where.textContent.replace(/^·\s*/,'')+'<br><br>':'')+(why?why.textContent:'')+'</div>';
-      var q=name+' '+(where?where.textContent.replace(/^·\s*/,''):'')+' '+cityFor(it);
-      openSheet(html,[mapsLink(q)]);
-    });
+  document.querySelectorAll(".party[data-who]").forEach(p => {
+    p.classList.toggle("hidden", who !== "all" && p.dataset.who !== who);
   });
-
-  // Stay cards → sheet with maps + refs
-  document.querySelectorAll('.stay').forEach(function(st){
-    st.dataset.tap='1';
-    st.addEventListener('click',function(){
-      var h=st.querySelector('h3'),meta=st.querySelector('.meta'),photo=st.querySelector('.photo.loaded');
-      var html='';
-      if(photo)html+='<div class="sphoto" style="background-image:'+photo.style.backgroundImage+'"></div>';
-      html+='<div class="skind">In Residence</div><h3>'+(h?h.textContent:'')+'</h3>'+(meta?'<div class="sbody">'+meta.innerHTML+'</div>':'');
-      var actions=[mapsLink((h?h.textContent:'')+' '+cityFor(st))];
-      if(meta)refActions(meta,actions);
-      openSheet(html,actions);
-    });
-  });
-})();
+}
+chips.forEach(c => c.addEventListener("click", () => {
+  chips.forEach(o => o.setAttribute("aria-pressed", String(o === c)));
+  applyFilter(c.dataset.who);
+}));
 </script>
 </body>
 </html>
